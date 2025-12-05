@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>John Doe - Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200"
+  >
+    <div class="relative min-h-screen">
+      <main class="w-full">
+        <header
+          class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm"
+        >
+          <div class="container mx-auto px-6">
+            <div
+              class="flex items-center justify-between whitespace-nowrap border-b border-gray-200/50 dark:border-white/10 h-20"
+            >
+              <div class="flex items-center gap-4">
+                <div class="size-6 text-primary">
+                  <svg
+                    fill="none"
+                    viewBox="0 0 48 48"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-gray-900 dark:text-white text-lg font-bold">
+                  Israt Jahan
+                </h2>
+              </div>
+              <nav class="hidden md:flex flex-1 justify-end gap-8">
+                <div class="flex items-center gap-9">
+                  <a
+                    class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium"
+                    href="#"
+                    >Home</a
+                  >
+                  <a
+                    class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium"
+                    href="about-me"
+                    >About Me</a
+                  >
+                  <a
+                    class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium"
+                    href="#"
+                    >Projects</a
+                  >
+                  <a
+                    class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium"
+                    href="#"
+                    >Contact</a
+                  >
+                </div>
+                <button
+                  class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold transition-transform hover:scale-105"
+                >
+                  <span class="truncate">Hire Me</span>
+                </button>
+              </nav>
+              <div class="md:hidden">
+                <button class="text-gray-900 dark:text-white">
+                  <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="flex">
+          <aside
+            class="fixed left-0 top-0 z-40 hidden h-full w-24 flex-col items-center justify-center lg:flex"
+          >
+            <div class="flex flex-col gap-4">
+              <a class="group" href="#">
+                <div
+                  class="flex items-center justify-center p-3 rounded-full bg-transparent hover:bg-primary/20 transition-colors duration-300"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-7 h-7 text-gray-500 dark:text-gray-400 group-hover:text-primary"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a class="group" href="#">
+                <div
+                  class="flex items-center justify-center p-3 rounded-full bg-transparent hover:bg-primary/20 transition-colors duration-300"
+                >
+                  <span
+                    class="material-symbols-outlined text-gray-500 dark:text-gray-400 group-hover:text-primary text-3xl"
+                    >mail</span
+                  >
+                </div>
+              </a>
+              <a class="group" href="#">
+                <div
+                  class="flex items-center justify-center p-3 rounded-full bg-transparent hover:bg-primary/20 transition-colors duration-300"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-7 h-7 text-gray-500 dark:text-gray-400 group-hover:text-primary"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.05 3.67c4.55 0 8.23 3.68 8.23 8.23 0 4.55-3.68 8.23-8.23 8.23-1.54 0-3.04-.42-4.38-1.21l-.3-.18-3.26.86.88-3.18-.2-.32a8.18 8.18 0 01-1.26-4.48c0-4.55 3.68-8.23 8.24-8.23zm-1.83 5.3c-.27-.13-1.64-.81-1.9-1-.26-.18-.45-.28-.63.28-.18.56-.72 1.76-.88 2.12-.17.36-.33.4-.63.13-.3-.26-1.25-.46-2.38-1.47-1-1-1.6-2.22-1.8-2.6-.2-.37 0-.56.12-.7l.27-.3c.12-.13.25-.33.38-.55s.12-.2.18-.33c.06-.13.03-.25 0-.38-.03-.13-.63-1.52-.86-2.08-.23-.56-.47-.48-.63-.48-.17 0-.35-.03-.53-.03s-.45.06-1 .56c-.55.5-1.12 1.38-1.12 3.35s1.14 3.9 1.3 4.17c.15.28 2.24 3.4 5.43 4.8 3.18 1.4 3.18.93 3.75.87.57-.06 1.64-.67 1.87-1.32.23-.65.23-1.2.17-1.32-.06-.13-.25-.2-.53-.34z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a class="group" href="#">
+                <div
+                  class="flex items-center justify-center p-3 rounded-full bg-transparent hover:bg-primary/20 transition-colors duration-300"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-7 h-7 text-gray-500 dark:text-gray-400 group-hover:text-primary"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.37-1.34-3.37-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.89 1.526 2.332 1.085 2.902.83.092-.645.348-1.085.635-1.334-2.214-.252-4.543-1.107-4.543-4.93 0-1.088.39-1.979 1.03-2.675-.103-.253-.446-1.266.098-2.638 0 0 .837-.268 2.742 1.025A9.549 9.549 0 0112 6.84c.85.004 1.705.114 2.504.336 1.905-1.293 2.742-1.025 2.742-1.025.546 1.372.201 2.385.1 2.638.64.696 1.03 1.587 1.03 2.675 0 3.833-2.333 4.674-4.555 4.922.357.308.679.918.679 1.85 0 1.334-.012 2.41-.012 2.736 0 .267.18.577.688.48C19.138 20.162 22 16.416 22 12A10 10 0 0012 2z"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </aside>
+          <div class="container mx-auto flex-1 pl-0 lg:pl-24">
+            <section
+              class="flex min-h-[calc(100vh-80px)] items-center px-6 py-12 md:py-24"
+            >
+              <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+                <div class="flex flex-col gap-6 text-center lg:text-left">
+                  <div class="flex flex-col gap-2">
+                    <h1
+                      class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-tighter md:text-5xl lg:text-6xl"
+                    >
+                      Hi, I'm Israt Jahan
+                    </h1>
+                    <h2
+                      class="text-gray-600 dark:text-gray-300 text-base font-normal md:text-lg"
+                    >
+                      A MERN Stack Developer Crafting Modern &amp; Responsive
+                      Web Experiences
+                    </h2>
+                  </div>
+                  <div
+                    class="flex flex-wrap justify-center gap-4 lg:justify-start"
+                  >
+                    <button
+                      class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold tracking-wide transition-transform hover:scale-105"
+                    >
+                      <span class="truncate">View My Work</span>
+                    </button>
+                    <button
+                      class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white text-base font-bold tracking-wide transition-transform hover:scale-105"
+                    >
+                      <span class="truncate">Download CV</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="relative flex justify-center">
+                  <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <div
+                      class="absolute inset-0 rounded-full bg-primary/20 -translate-x-4 -translate-y-4"
+                    ></div>
+                    <div
+                      class="w-full h-full rounded-full bg-center bg-no-repeat bg-cover shadow-lg"
+                      data-alt="Professional headshot of John Doe, a frontend developer."
+                      style="
+                        background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkom0FEzYuj4Rm_VhgA1MNpaoHj_PJZNM8xrtpCWCtbBOANh8Hi1rspCuKsUSRxAcKmv81QW2KCauzBtvU597Nhssi1fkt_2JQ2BD7gN3NBM1tPh94meZsVoF0031vFbxSr1d7W0c5X_ymDg3yb7jtq_aDErXkn64WfCsvVhqxK1mXwtb6Vy2ivcaYGZk4rpeqmu0mih5Vpc981GEXCechw3YoLVMROo_9wOlkFN0RSlfbquWYADymW6q-TYjbGjSXLg-89V9OyGeB');
+                      "
+                    ></div>
+                    <div
+                      class="absolute bottom-4 -right-4 md:bottom-8 md:-right-8 flex items-center gap-3 rounded-xl bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-3 shadow-lg border border-gray-200/50 dark:border-white/10"
+                    >
+                      <div
+                        class="flex size-10 items-center justify-center rounded-full bg-primary text-white"
+                      >
+                        <span class="material-symbols-outlined text-2xl"
+                          >star</span
+                        >
+                      </div>
+                      <div class="flex flex-col text-left">
+                        <h3
+                          class="text-gray-900 dark:text-white text-base font-bold leading-none"
+                        >
+                          Hands-on
+                        </h3>
+                        <p
+                          class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-tight"
+                        >
+                          Experience
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <section class="bg-slate-900 text-slate-300 pt-20">
+      <section
+        class="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8"
+      >
+        <div class="container mx-auto max-w-7xl">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+          >
+            <div
+              class="relative w-full h-80 lg:h-full rounded-lg overflow-hidden"
+            >
+              <img
+                alt="A developer working on code across two monitors in a dimly lit room."
+                class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8cU3K0oVUCuL3gz31NbUapR2ajH3ijqmpVILGWm_i9AxX5sRgF1yG_rwQDM0KPSUW69fhfs-3R62jrbhPqj9Qd5_G4pPl7HGfrTdE6AUNbmmlcHT1DLVHo1hgzIbnTdvokv8qaNM3A9402enUHo5bKbPaOZDGYYXrCJjeu31OxYvvi97UPq2nj8HOn1aLvCwOvrOHeF06RB14TVcfdRsE4uO2qNaB5G4_kg3Quvy9NDtzcnO_CWc6Plcm4DLkMJB0Zt4Dsv1Wgnqj"
+              />
+              <div
+                class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-slate-900 to-transparent"
+              ></div>
+            </div>
+            <div class="text-left">
+              <h2
+                class="text-3xl sm:text-4xl font-bold font-display text-slate-100 mb-6"
+              >
+                Who Am I
+              </h2>
+              <div class="space-y-4 text-slate-400">
+                <p>
+                  I'm a passionate MERN Stack Developer with a knack for
+                  creating beautiful and functional websites
+                </p>
+                <p>
+                  I have a strong foundation in HTML, CSS, and JavaScript, and I
+                  love to learn new technologies and frameworks. I enjoy working
+                  on projects that challenge me and allow me to grow as a
+                  developer.
+                </p>
+                <p>
+                  When I'm not coding, you can find me hiking in the mountains
+                  or experimenting with new recipes in the kitchen. I believe
+                  that a healthy work-life balance is essential for creativity
+                  and productivity.
+                </p>
+              </div>
+              <div class="mt-8">
+                <div>
+                  <p class="text-3xl font-bold text-primary">20</p>
+                  <p class="text-sm text-slate-500 tracking-wide">Projects</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="font-display bg-slate-900 text-slate-300 antialiased">
+      <section class="py-16 sm:py-24">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+          <div class="text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold text-white">My Skills</h2>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-400">
+              As a dedicated MERN Stack developer, I've honed a versatile set of
+              skills to build modern, responsive, and high-performance web
+              applications. Below are some of the key technologies I work with.
+            </p>
+          </div>
+          <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                  <img
+                    alt="React icon"
+                    class="w-6 h-6"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD18HfVfl7ZnFuKhtJZNyjfiYKv_TRVs1mPxMA3y9doCIPuzZT_oQ0TrzwCnK_-a6QewALSQiYtXpzz2nQOrZKmNykxencNNIcjavzQWJl2-TGsVsS7xNx9u5SPgoS6vk2ePjZpO0WGugPQDaortCgfnXyaN8ldBF5Dhh-n462zEV8uag3F5AbzfhK1ROz1fY1rNVwlGrGaG_UlfrrfE72wYJx_hQR7Jh52dHWXJXxukpCHicqDGGV4FmDLMXbkJ12Bb7wXcNa0yGMK"
+                  />
+                  <h3 class="font-semibold text-lg text-slate-200">React</h3>
+                </div>
+                <span class="font-medium text-slate-400">90%</span>
+              </div>
+              <div class="w-full bg-slate-700 rounded-full h-2.5">
+                <div
+                  class="bg-primary h-2.5 rounded-full"
+                  style="width: 90%"
+                ></div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                  <img
+                    alt="Node.js icon"
+                    class="w-6 h-6"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcVz1y6U7zCEO8SyVt-3yPntlyz465bfMS3hfo7mgRaOSAOJEdnRJjO3MHcFGBNtid8BeIEcUmzuceJrnegEfhaAJa_0MGKC4ZVk4YCdmffu3UdGwS0dykvKcNWV9NWDZFt3JB-mwPcaoYFnRChaC1qk-oDDuOisPVohnmVwW1r4_6Mvxj_kMfNyKPhAZZmZwSmbk_weTfIFl2Z1okKF58ls0bfYioWr8VG-guvCi9KbG2Z8xiakhdUdC7__YT1sIQRVtqpSZpggZw"
+                  />
+                  <h3 class="font-semibold text-lg text-slate-200">Node.js</h3>
+                </div>
+                <span class="font-medium text-slate-400">85%</span>
+              </div>
+              <div class="w-full bg-slate-700 rounded-full h-2.5">
+                <div
+                  class="bg-primary h-2.5 rounded-full"
+                  style="width: 85%"
+                ></div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                  <img
+                    alt="JavaScript icon"
+                    class="w-6 h-6"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF7olqMT2y8XexB73w2P9AMDH0D4x3HmWsfD2g9a-NuPhiJD1yzM8dTf58xFFO1tGpaO4jqVal2r3-yUGq9bvwTmOPH2vhZYVNZMCH24o1eoxNcSsaur42ga56ugv1eXmQVmEGKgiyAZDUWYLgh-DQMsAV7njaU1w253Zn5zBSbeum0AJ1V0S-Vi5eC5O_gK9M57Qy21A43YDXBWbh2WHvdpsR-zr_BzS4Mp95Z1JXDJMHI2GlFY1kkEl2Q1jmQz64lCvTzaX8iEm2"
+                  />
+                  <h3 class="font-semibold text-lg text-slate-200">
+                    JavaScript
+                  </h3>
+                </div>
+                <span class="font-medium text-slate-400">95%</span>
+              </div>
+              <div class="w-full bg-slate-700 rounded-full h-2.5">
+                <div
+                  class="bg-primary h-2.5 rounded-full"
+                  style="width: 95%"
+                ></div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                  <svg
+                    class="w-6 h-6 text-slate-200"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M211.83,184.2,239,128,211.83,71.8a16,16,0,0,0-10.74-9.39L144,40.8V16a16,16,0,0,0-32,0V40.8L54.91,62.41a16,16,0,0,0-10.74,9.39L17,128l27.17,56.2a16,16,0,0,0,10.74,9.39L112,215.2V240a16,16,0,0,0,32,0V215.2l57.09-21.61a16,16,0,0,0,10.74-9.39Zm-9.84-2L144,203.8V146.39l-42.36,16.08L82.17,136l41-15.56.73-1.4,1.44,0,1,0h.17l57.26,21.73Zm.3-63.53-57.57-21.84L156.17,120l-41,15.56-19.47-36.38,42.36-16.08V52.2L202.29,71Z"
+                    ></path>
+                  </svg>
+                  <h3 class="font-semibold text-lg text-slate-200">
+                    Express.js
+                  </h3>
+                </div>
+                <span class="font-medium text-slate-400">75%</span>
+              </div>
+              <div class="w-full bg-slate-700 rounded-full h-2.5">
+                <div
+                  class="bg-primary h-2.5 rounded-full"
+                  style="width: 75%"
+                ></div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                  <img
+                    alt="HTML5 icon"
+                    class="w-6 h-6"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvDGhyQzpAuhEYvhNsEr2EB3WOplSbMVdJUx6ioeL_zojUkLM_insKjR7Tdjwj_kH62EfFhA3ZAgLmJIIgErETXl_XyETE0dBbcB1vZKaZ9F4cqdrQaDl9BoooSh--ioijByH0Scv9uEauv9iCrWlNZhvbx6yVg7_sdkvXHDzPrUhd6BX40tMs3B2c0Pmg6TIK6GQiCWB735TUIxDa_j3KGVNXNj1BWP0pfqfUzgYgUrTdfrNOh8n5Z1PkziYE3R45COCH38fETosI"
+                  />
+                  <h3 class="font-semibold text-lg text-slate-200">HTML</h3>
+                </div>
+                <span class="font-medium text-slate-400">98%</span>
+              </div>
+              <div class="w-full bg-slate-700 rounded-full h-2.5">
+                <div
+                  class="bg-primary h-2.5 rounded-full"
+                  style="width: 98%"
+                ></div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                  <img
+                    alt="CSS3 icon"
+                    class="w-6 h-6"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFU03-0If-O8o2zAhlcuoU-exSbtiu5pvnZ-SUZ2qGno9hkz_x8GtlscESIFTa2n0K0juqWmbnSWP9ks4qk1-oISv3HfF7h_qKLJGmDz1yYUt1yzY8NpGkqlfh2VAVSP6BTuqc7h5n8qjEprgxTLun37amGCPdRPxt4jzkzB2XGm3iLqxaonEqACUqLL8wM0mHNbkiqpoqlrSIrZQctMmmUAP4fTxppLEX09QqbVDdEFK7RnVEkQbmvvi5G-GB9qsGS1Cwo9Aze_EJ"
+                  />
+                  <h3 class="font-semibold text-lg text-slate-200">CSS3</h3>
+                </div>
+                <span class="font-medium text-slate-400">92%</span>
+              </div>
+              <div class="w-full bg-slate-700 rounded-full h-2.5">
+                <div
+                  class="bg-primary h-2.5 rounded-full"
+                  style="width: 92%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="bg-background-dark font-display antialiased">
+      <div class="p-4 sm:p-6 md:p-8 lg:p-12">
+        <div class="max-w-4xl mx-auto">
+          <header class="text-center mb-12 lg:mb-16">
+            <h1
+              class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-100"
+            >
+              My Projects
+            </h1>
+            <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-400">
+              A collection of projects showcasing my skills in frontend
+              development.
+            </p>
+          </header>
+          <main class="space-y-8">
+            <div
+              class="bg-slate-900/40 p-6 sm:p-8 md:p-10 rounded-DEFAULT backdrop-blur-lg border border-slate-800 shadow-2xl shadow-black/20"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <h2 class="text-2xl font-bold text-slate-100">
+                    AI Chat Interface
+                  </h2>
+                  <p class="mt-2 text-sm text-slate-400">
+                    Developing the next generation of conversational AI.
+                  </p>
+                  <p class="mt-6 text-base text-slate-300">
+                    A sleek and responsive chat interface built with modern web
+                    technologies. It features real-time message updates, user
+                    authentication, and a clean, intuitive design optimized for
+                    user experience.
+                  </p>
+                  <div class="mt-8 flex flex-wrap gap-4">
+                    <a
+                      class="inline-flex items-center justify-center px-5 py-2.5 bg-primary/5 text-primary hover:bg-primary/10 rounded-lg text-sm font-medium transition-colors"
+                      href="#"
+                    >
+                      Know More
+                      <span class="material-symbols-outlined ml-2 text-base"
+                        >arrow_forward</span
+                      >
+                    </a>
+                    <a
+                      class="inline-flex items-center justify-center px-5 py-2.5 text-slate-300 hover:bg-slate-800/50 rounded-lg text-sm font-medium transition-colors"
+                      href="#"
+                    >
+                      Live Preview
+                      <span class="material-symbols-outlined ml-2 text-base"
+                        >open_in_new</span
+                      >
+                    </a>
+                  </div>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img
+                    alt="AI Chat Interface project preview showing a dark themed application with prompts and responses."
+                    class="rounded-xl shadow-lg"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRGy-woq_mbQaHV6rC6KMIpg01LcYaeELoQWeYXVWdulI2ZLjfQuTP8G8suLwDoL3EYsp3kJ79M-b_MC0UqQH1sEvkvH6cJgr4y6FJKL4zRLKqXOLaiLuMQXeQgb_9UZi-Gta1wfRhXysZCIq4lM8gcV8d4Oqbdtlu3XvpX44wmH93i-IXjtvOY1FVTCsSuxQAd6U8A9d8nBTsEsGzZ44voIcKrAMEghoOGOesDrKkT7PTNZjG39GffZGj9LMwXar3-02-JGJouOyd"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-slate-900/40 p-6 sm:p-8 md:p-10 rounded-DEFAULT backdrop-blur-lg border border-slate-800 shadow-2xl shadow-black/20"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="order-1 md:order-1">
+                  <img
+                    alt="Data Visualization Dashboard project preview showing a 3D point cloud of a street scene."
+                    class="rounded-xl shadow-lg"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCXM230e2jB2iiFFyf0go6fKtnpemcnYOek1-ynJUw85Pz4NBvuaMvfjP4Xan0FURAuQX5B8xz4P1H6xwdsfomWHAGG6aTVLEM65IjrHmGwF0KU20A-LNaKlydRL11GjwreSPLhQ7Fh9zNKR1h0eWQt6y-gPkvc5O1OlcjeHGAtNlhE7zh3YttvKqezWmlZ4D7kTP5xpsx8z-YkSpeIdilA6-X3MvFCAKz6yoWJsFaJJgYASE_45KL4f0VfhBfat77MX1MUKD5n-Ns"
+                  />
+                </div>
+                <div class="order-2 md:order-2">
+                  <h2 class="text-2xl font-bold text-slate-100">
+                    Data Visualization Dashboard
+                  </h2>
+                  <p class="mt-2 text-sm text-slate-400">
+                    The best quality data to fuel the best performing models.
+                  </p>
+                  <div class="my-6 border-b border-slate-700">
+                    <nav class="flex -mb-px space-x-6">
+                      <button
+                        class="py-2 px-1 border-b-2 border-primary text-primary text-sm font-semibold"
+                      >
+                        3D
+                      </button>
+                      <button
+                        class="py-2 px-1 border-b-2 border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-500 text-sm font-medium transition-colors"
+                      >
+                        Image
+                      </button>
+                      <button
+                        class="py-2 px-1 border-b-2 border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-500 text-sm font-medium transition-colors"
+                      >
+                        Mapping
+                      </button>
+                    </nav>
+                  </div>
+                  <p class="text-base text-slate-300">
+                    An advanced dashboard for visualizing complex 3D datasets.
+                    This project leverages WebGL to render high-performance,
+                    interactive point clouds and sensor data directly in the
+                    browser.
+                  </p>
+                  <div class="mt-8 flex flex-wrap gap-4">
+                    <a
+                      class="inline-flex items-center justify-center px-5 py-2.5 bg-primary/5 text-primary hover:bg-primary/10 rounded-lg text-sm font-medium transition-colors"
+                      href="#"
+                    >
+                      Know More
+                      <span class="material-symbols-outlined ml-2 text-base"
+                        >arrow_forward</span
+                      >
+                    </a>
+                    <a
+                      class="inline-flex items-center justify-center px-5 py-2.5 text-slate-300 hover:bg-slate-800/50 rounded-lg text-sm font-medium transition-colors"
+                      href="#"
+                    >
+                      Live Preview
+                      <span class="material-symbols-outlined ml-2 text-base"
+                        >open_in_new</span
+                      >
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-slate-900/40 p-6 sm:p-8 md:p-10 rounded-DEFAULT backdrop-blur-lg border border-slate-800 shadow-2xl shadow-black/20"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <h2 class="text-2xl font-bold text-slate-100">
+                    Image Curation Platform
+                  </h2>
+                  <p class="mt-2 text-sm text-slate-400">
+                    Unearth the most valuable data by intelligently managing
+                    your dataset.
+                  </p>
+                  <p class="mt-6 text-base text-slate-300">
+                    A web application for curating, testing, and evaluating
+                    image datasets. Features include advanced filtering, model
+                    comparison tools, and a robust interface for identifying the
+                    highest value data.
+                  </p>
+                  <div class="mt-8 flex flex-wrap gap-4">
+                    <a
+                      class="inline-flex items-center justify-center px-5 py-2.5 bg-primary/5 text-primary hover:bg-primary/10 rounded-lg text-sm font-medium transition-colors"
+                      href="#"
+                    >
+                      Know More
+                      <span class="material-symbols-outlined ml-2 text-base"
+                        >arrow_forward</span
+                      >
+                    </a>
+                    <a
+                      class="inline-flex items-center justify-center px-5 py-2.5 text-slate-300 hover:bg-slate-800/50 rounded-lg text-sm font-medium transition-colors"
+                      href="#"
+                    >
+                      Live Preview
+                      <span class="material-symbols-outlined ml-2 text-base"
+                        >open_in_new</span
+                      >
+                    </a>
+                  </div>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img
+                    alt="Image Curation Platform project preview showing a gallery of images with filtering and data visualization components."
+                    class="rounded-xl shadow-lg"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl9JPF4GCne8v46eY6hQK4MKmxyvOlKaEm7bTEhAD-YEjmwqnGx5xB3giihO7iCEK3uQfqwZeNdwZliR92cIgBT7Ie-Lxy3csh7R4QzjKWjBx0H4-6hkydttUtBuw4L8nwEETZGk9h_eel2nQtUfZpJ_kTpsRyO9DexgiEXbyWQiV3P-sHMF5EScTrkxCuNez_xo7GhkZAJIrLEsB8hRWeAVp7AeXtlLQ0XxvMSysMmR_QcquovPVGZLvv0MxhvMs62j1t4KllCOK0"
+                  />
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-background-light dark:bg-background-dark font-display">
+      <div
+        class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden"
+      >
+        <div class="layout-container flex h-full grow flex-col">
+          <main
+            class="px-4 sm:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-10 sm:py-20"
+          >
+            <div class="layout-content-container w-full max-w-7xl">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
+                <div class="flex flex-col gap-8">
+                  <div class="flex flex-col gap-3">
+                    <p
+                      class="text-gray-900 dark:text-white text-4xl sm:text-5xl font-black leading-tight tracking-[-0.033em]"
+                    >
+                      Get in Touch
+                    </p>
+                    <p
+                      class="text-gray-500 dark:text-[#9db0b9] text-base font-normal leading-normal"
+                    >
+                      Have a project in mind or just want to say hi? Feel free
+                      to send me a message. I'll get back to you as soon as
+                      possible.
+                    </p>
+                  </div>
+                  <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-4 min-h-14">
+                      <div
+                        class="text-gray-800 dark:text-white flex items-center justify-center rounded-lg bg-gray-100 dark:bg-[#283339] shrink-0 size-10"
+                      >
+                        <span class="material-symbols-outlined">mail</span>
+                      </div>
+                      <p
+                        class="text-gray-800 dark:text-white text-base font-medium leading-normal flex-1 truncate"
+                      >
+                        israt9528@gmail.com
+                      </p>
+                    </div>
+                    <div class="flex items-center gap-4 min-h-14">
+                      <div
+                        class="text-gray-800 dark:text-white flex items-center justify-center rounded-lg bg-gray-100 dark:bg-[#283339] shrink-0 size-10"
+                      >
+                        <span class="material-symbols-outlined">call</span>
+                      </div>
+                      <p
+                        class="text-gray-800 dark:text-white text-base font-medium leading-normal flex-1 truncate"
+                      >
+                        +8801889984859
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <div class="gap-4 flex flex-wrap justify-start">
+                      <a
+                        class="flex flex-col items-center gap-2 p-2.5 text-center w-20 group"
+                        href="#"
+                      >
+                        <div
+                          class="rounded-full bg-gray-100 dark:bg-[#283339] group-hover:bg-primary/20 p-2.5 transition-colors"
+                        >
+                          <span
+                            class="material-symbols-outlined text-gray-700 dark:text-white group-hover:text-primary transition-colors"
+                            >code</span
+                          >
+                        </div>
+                        <p
+                          class="text-gray-600 dark:text-white text-sm font-medium leading-normal"
+                        >
+                          GitHub
+                        </p>
+                      </a>
+                      <a
+                        class="flex flex-col items-center gap-2 p-2.5 text-center w-20 group"
+                        href="#"
+                      >
+                        <div
+                          class="rounded-full bg-gray-100 dark:bg-[#283339] group-hover:bg-primary/20 p-2.5 transition-colors"
+                        >
+                          <span
+                            class="material-symbols-outlined text-gray-700 dark:text-white group-hover:text-primary transition-colors"
+                            >work</span
+                          >
+                        </div>
+                        <p
+                          class="text-gray-600 dark:text-white text-sm font-medium leading-normal"
+                        >
+                          LinkedIn
+                        </p>
+                      </a>
+                      <a
+                        class="flex flex-col items-center gap-2 p-2.5 text-center w-20 group"
+                        href="#"
+                      >
+                        <div
+                          class="rounded-full bg-gray-100 dark:bg-[#283339] group-hover:bg-primary/20 p-2.5 transition-colors"
+                        >
+                          <span
+                            class="material-symbols-outlined text-gray-700 dark:text-white group-hover:text-primary transition-colors"
+                            >social_leaderboard</span
+                          >
+                        </div>
+                        <p
+                          class="text-gray-600 dark:text-white text-sm font-medium leading-normal"
+                        >
+                          Facebook
+                        </p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-white dark:bg-[#111618] p-8 rounded-xl shadow-lg dark:border dark:border-[#283339]"
+                >
+                  <form class="flex flex-col gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2"
+                          for="first-name"
+                          >First Name</label
+                        >
+                        <input
+                          class="w-full h-12 px-4 rounded-lg bg-gray-100 dark:bg-[#283339] border-transparent focus:border-primary focus:ring-primary text-gray-800 dark:text-white"
+                          id="first-name"
+                          name="first-name"
+                          placeholder="John"
+                          type="text"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2"
+                          for="last-name"
+                          >Last Name</label
+                        >
+                        <input
+                          class="w-full h-12 px-4 rounded-lg bg-gray-100 dark:bg-[#283339] border-transparent focus:border-primary focus:ring-primary text-gray-800 dark:text-white"
+                          id="last-name"
+                          name="last-name"
+                          placeholder="Doe"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2"
+                        for="email"
+                        >Email</label
+                      >
+                      <input
+                        class="w-full h-12 px-4 rounded-lg bg-gray-100 dark:bg-[#283339] border-transparent focus:border-primary focus:ring-primary text-gray-800 dark:text-white"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        type="email"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2"
+                        for="message"
+                        >Message</label
+                      >
+                      <textarea
+                        class="w-full p-4 rounded-lg bg-gray-100 dark:bg-[#283339] border-transparent focus:border-primary focus:ring-primary text-gray-800 dark:text-white"
+                        id="message"
+                        name="message"
+                        placeholder="Your message here..."
+                        rows="5"
+                      ></textarea>
+                    </div>
+                    <div>
+                      <button
+                        class="w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary hover:bg-opacity-80 text-white text-base font-bold leading-normal tracking-[0.015em]"
+                        type="submit"
+                      >
+                        <span class="truncate">Send Message</span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-background-light dark:bg-background-dark font-display">
+      <!-- This is a wrapper div to center the footer for presentation purposes. In a real site, the footer would likely be a direct child of the body or a main layout wrapper. -->
+      <div class="flex items-end justify-center">
+        <footer
+          class="w-full bg-background-light dark:bg-background-dark py-12 px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <div class="max-w-4xl mx-auto flex flex-col items-center gap-8">
+            <h2
+              class="text-3xl font-bold text-slate-800 dark:text-slate-200 tracking-tight"
+            >
+              Israt Jahan
+            </h2>
+            <div class="flex flex-wrap justify-center gap-6">
+              <a
+                aria-label="Visit my GitHub profile"
+                class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-300"
+                href="#"
+              >
+                <span class="material-symbols-outlined" style="font-size: 28px"
+                  >code</span
+                >
+              </a>
+              <a
+                aria-label="Visit my LinkedIn profile"
+                class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-300"
+                href="#"
+              >
+                <span class="material-symbols-outlined" style="font-size: 28px"
+                  >work</span
+                >
+              </a>
+              <a
+                aria-label="Follow me on Facebook"
+                class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-300"
+                href="#"
+              >
+                <span class="material-symbols-outlined" style="font-size: 28px"
+                  >social_leaderboard</span
+                >
+              </a>
+              <a
+                aria-label="Send me an email"
+                class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-300"
+                href="mailto:johndoe@example.com"
+              >
+                <span class="material-symbols-outlined" style="font-size: 28px"
+                  >mail</span
+                >
+              </a>
+              <a
+                aria-label="Call me"
+                class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-300"
+                href="tel:+1234567890"
+              >
+                <span class="material-symbols-outlined" style="font-size: 28px"
+                  >call</span
+                >
+              </a>
+            </div>
+            <nav
+              class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
+            >
+              <a
+                class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-base font-medium leading-normal transition-colors duration-300"
+                href="#"
+                >Home</a
+              >
+              <a
+                class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-base font-medium leading-normal transition-colors duration-300"
+                href="#"
+                >About</a
+              >
+              <a
+                class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-base font-medium leading-normal transition-colors duration-300"
+                href="#"
+                >Projects</a
+              >
+              <a
+                class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-base font-medium leading-normal transition-colors duration-300"
+                href="#"
+                >My Skills</a
+              >
+              <a
+                class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-base font-medium leading-normal transition-colors duration-300"
+                href="#"
+                >Contact</a
+              >
+            </nav>
+            <p
+              class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal mt-4"
+            >
+              © 2025 Israt Jahan. All Rights Reserved.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </body>
+</html>

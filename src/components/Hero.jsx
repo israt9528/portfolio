@@ -139,7 +139,7 @@ export default function Hero() {
 
             {/* Image with floating animation */}
             <motion.img
-              src="your-image-url-here"
+              src="https://i.ibb.co.com/bRjPDPrj/Whats-App-Image-2025-12-06-at-14-08-32-1a92cbef-removebg-preview.png"
               alt="Israt Jahan"
               className="w-full h-full object-cover rounded-full shadow-xl"
               animate={{ y: [0, -12, 0] }}

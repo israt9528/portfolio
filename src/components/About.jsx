@@ -59,7 +59,7 @@ import { Sparkles, Code, User } from "lucide-react";
 export default function AboutMe() {
   return (
     <section
-      id="about"
+      id="about-me"
       className="relative w-full min-h-screen px-6 py-24 bg-[#0A0A0F] text-white flex items-center justify-center overflow-hidden"
     >
       {/* Glowing background orbs */}

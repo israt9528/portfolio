@@ -1,162 +1,137 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import { FiMail, FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
+
+const contactInfo = [
+  {
+    icon: <FiMail />,
+    label: "Email",
+    value: "israt9528@gmail.com.com",
+    link: "mailto:israt9528@gmail.com.com",
+  },
+  {
+    icon: <FiGithub />,
+    label: "GitHub",
+    value: "github.com/israt9528",
+    link: "https://github.com/israt9528",
+  },
+  {
+    icon: <FiLinkedin />,
+    label: "LinkedIn",
+    value: "linkedin.com/in/israt-jahan",
+    link: "https://www.linkedin.com/in/israt-jahan-889516388/",
+  },
+  {
+    icon: <FiTwitter />,
+    label: "Twitter",
+    value: "@yourusername",
+    link: "https://twitter.com/yourusername",
+  },
+];
+
+const formVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
 
 const Contact = () => {
   return (
-    <section id="contact" className="bg-background-light dark:bg-background-dark font-display">
-      <div className="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
-        <div className="layout-container flex h-full grow flex-col">
-          <main className="px-4 sm:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-10 sm:py-20">
-            <div className="layout-content-container w-full max-w-7xl">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
-                <div className="flex flex-col gap-8">
-                  <div className="flex flex-col gap-3">
-                    <p className="text-gray-900 dark:text-white text-4xl sm:text-5xl font-black leading-tight tracking-[-0.033em]">
-                      Get in Touch
-                    </p>
-                    <p className="text-gray-500 dark:text-[#9db0b9] text-base font-normal leading-normal">
-                      Have a project in mind or just want to say hi? Feel free to
-                      send me a message. I'll get back to you as soon as possible.
-                    </p>
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-4 min-h-14">
-                      <div className="text-gray-800 dark:text-white flex items-center justify-center rounded-lg bg-gray-100 dark:bg-[#283339] shrink-0 size-10">
-                        <span className="material-symbols-outlined">mail</span>
-                      </div>
-                      <p className="text-gray-800 dark:text-white text-base font-medium leading-normal flex-1 truncate">
-                        israt9528@gmail.com
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-4 min-h-14">
-                      <div className="text-gray-800 dark:text-white flex items-center justify-center rounded-lg bg-gray-100 dark:bg-[#283339] shrink-0 size-10">
-                        <span className="material-symbols-outlined">call</span>
-                      </div>
-                      <p className="text-gray-800 dark:text-white text-base font-medium leading-normal flex-1 truncate">
-                        +8801889984859
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <div className="gap-4 flex flex-wrap justify-start">
-                      <a
-                        className="flex flex-col items-center gap-2 p-2.5 text-center w-20 group"
-                        href="#"
-                      >
-                        <div className="rounded-full bg-gray-100 dark:bg-[#283339] group-hover:bg-primary/20 p-2.5 transition-colors">
-                          <span className="material-symbols-outlined text-gray-700 dark:text-white group-hover:text-primary transition-colors">
-                            code
-                          </span>
-                        </div>
-                        <p className="text-gray-600 dark:text-white text-sm font-medium leading-normal">
-                          GitHub
-                        </p>
-                      </a>
-                      <a
-                        className="flex flex-col items-center gap-2 p-2.5 text-center w-20 group"
-                        href="#"
-                      >
-                        <div className="rounded-full bg-gray-100 dark:bg-[#283339] group-hover:bg-primary/20 p-2.5 transition-colors">
-                          <span className="material-symbols-outlined text-gray-700 dark:text-white group-hover:text-primary transition-colors">
-                            work
-                          </span>
-                        </div>
-                        <p className="text-gray-600 dark:text-white text-sm font-medium leading-normal">
-                          LinkedIn
-                        </p>
-                      </a>
-                      <a
-                        className="flex flex-col items-center gap-2 p-2.5 text-center w-20 group"
-                        href="#"
-                      >
-                        <div className="rounded-full bg-gray-100 dark:bg-[#283339] group-hover:bg-primary/20 p-2.5 transition-colors">
-                          <span className="material-symbols-outlined text-gray-700 dark:text-white group-hover:text-primary transition-colors">
-                            social_leaderboard
-                          </span>
-                        </div>
-                        <p className="text-gray-600 dark:text-white text-sm font-medium leading-normal">
-                          Facebook
-                        </p>
-                      </a>
-                    </div>
-                  </div>
+    <section
+      id="contact"
+      className="bg-gray-900 font-display antialiased py-16"
+    >
+      <div className="px-4 sm:px-6 md:px-8 lg:px-12 max-w-6xl mx-auto">
+        <header className="text-center mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl sm:text-5xl font-bold text-slate-100"
+          >
+            Contact Me
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="mt-4 text-lg text-slate-400"
+          >
+            Feel free to reach out via email or connect with me on social media.
+            I’m always open to discussing new projects or opportunities.
+          </motion.p>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            {contactInfo.map((item, index) => (
+              <motion.a
+                key={index}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 bg-slate-800/40 hover:bg-slate-800/70 transition-colors px-6 py-4 rounded-lg shadow-lg backdrop-blur-md"
+                whileHover={{ scale: 1.03 }}
+              >
+                <div className="text-primary text-2xl">{item.icon}</div>
+                <div className="text-slate-100">
+                  <p className="font-semibold">{item.label}</p>
+                  <p className="text-slate-400 text-sm">{item.value}</p>
                 </div>
-                <div className="bg-white dark:bg-[#111618] p-8 rounded-xl shadow-lg dark:border dark:border-[#283339]">
-                  <form className="flex flex-col gap-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div>
-                        <label
-                          className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2"
-                          htmlFor="first-name"
-                        >
-                          First Name
-                        </label>
-                        <input
-                          className="w-full h-12 px-4 rounded-lg bg-gray-100 dark:bg-[#283339] border-transparent focus:border-primary focus:ring-primary text-gray-800 dark:text-white"
-                          id="first-name"
-                          name="first-name"
-                          placeholder="John"
-                          type="text"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2"
-                          htmlFor="last-name"
-                        >
-                          Last Name
-                        </label>
-                        <input
-                          className="w-full h-12 px-4 rounded-lg bg-gray-100 dark:bg-[#283339] border-transparent focus:border-primary focus:ring-primary text-gray-800 dark:text-white"
-                          id="last-name"
-                          name="last-name"
-                          placeholder="Doe"
-                          type="text"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label
-                        className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2"
-                        htmlFor="email"
-                      >
-                        Email
-                      </label>
-                      <input
-                        className="w-full h-12 px-4 rounded-lg bg-gray-100 dark:bg-[#283339] border-transparent focus:border-primary focus:ring-primary text-gray-800 dark:text-white"
-                        id="email"
-                        name="email"
-                        placeholder="you@example.com"
-                        type="email"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2"
-                        htmlFor="message"
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        className="w-full p-4 rounded-lg bg-gray-100 dark:bg-[#283339] border-transparent focus:border-primary focus:ring-primary text-gray-800 dark:text-white"
-                        id="message"
-                        name="message"
-                        placeholder="Your message here..."
-                        rows="5"
-                      ></textarea>
-                    </div>
-                    <div>
-                      <button
-                        className="w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary hover:bg-opacity-80 text-white text-base font-bold leading-normal tracking-[0.015em]"
-                        type="submit"
-                      >
-                        <span className="truncate">Send Message</span>
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+              </motion.a>
+            ))}
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.form
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={formVariants}
+            className="bg-slate-900/40 backdrop-blur-lg border border-slate-800 rounded-2xl p-8 shadow-2xl shadow-black/20 flex flex-col gap-6"
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert("Message sent!");
+              e.target.reset();
+            }}
+          >
+            <div className="flex flex-col gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                className="px-4 py-3 bg-slate-800/50 rounded-md text-slate-100 placeholder-slate-400 border border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                className="px-4 py-3 bg-slate-800/50 rounded-md text-slate-100 placeholder-slate-400 border border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+              />
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Your Message"
+                required
+                className="px-4 py-3 bg-slate-800/50 rounded-md text-slate-100 placeholder-slate-400 border border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+              />
             </div>
-          </main>
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.05 }}
+              className="self-start px-6 py-3 bg-primary text-slate-100 font-semibold rounded-lg shadow-md hover:bg-primary/90 transition-colors"
+            >
+              Send Message
+            </motion.button>
+          </motion.form>
         </div>
       </div>
     </section>

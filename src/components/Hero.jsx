@@ -1,55 +1,172 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import Particles from "react-tsparticles";
+import { Github, Linkedin, Mail, MessageSquare } from "lucide-react";
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <section className="flex min-h-[calc(100vh-80px)] items-center px-6 py-12 md:py-24">
-      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-        <div className="flex flex-col gap-6 text-center lg:text-left">
-          <div className="flex flex-col gap-2">
-            <h1 className="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-              Hi, I'm Israt Jahan
-            </h1>
-            <h2 className="text-gray-600 dark:text-gray-300 text-base font-normal md:text-lg">
-              A MERN Stack Developer Crafting Modern &amp; Responsive Web Experiences
-            </h2>
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-[#0b0d15]"
+    >
+      {/* NEON MOVING PARTICLES BACKGROUND */}
+      <Particles
+        options={{
+          fpsLimit: 60,
+          background: { color: "transparent" },
+          interactivity: {
+            events: {
+              onHover: { enable: true, mode: "repulse" },
+              onClick: { enable: true, mode: "push" },
+            },
+            modes: {
+              repulse: { distance: 120, duration: 0.4 },
+              push: { quantity: 4 },
+            },
+          },
+          particles: {
+            number: { value: 50, density: { enable: true, area: 800 } },
+            color: { value: ["#A855F7", "#F472B6", "#6366F1"] },
+            shape: { type: "circle" },
+            opacity: {
+              value: 0.5,
+              random: true,
+              anim: { enable: true, speed: 0.5, opacity_min: 0.2, sync: false },
+            },
+            size: { value: { min: 2, max: 4 }, random: true },
+            move: {
+              enable: true,
+              speed: 0.5,
+              direction: "none",
+              random: true,
+              straight: false,
+              outModes: { default: "out" },
+            },
+            links: {
+              enable: true,
+              distance: 120,
+              color: "#A855F7",
+              opacity: 0.3,
+              width: 1,
+              blink: false,
+              warp: false,
+            },
+          },
+          detectRetina: true,
+        }}
+        className="absolute inset-0 -z-10"
+      />
+
+      {/* Floating Sidebar Icons */}
+      <aside className="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 flex-col gap-6 z-50">
+        {[
+          { icon: <Github size={26} />, link: "https://github.com/" },
+          { icon: <Linkedin size={26} />, link: "https://linkedin.com/" },
+          { icon: <Mail size={26} />, link: "mailto:israt9528@gmail.com" },
+          { icon: <MessageSquare size={26} />, link: "#" },
+        ].map((item, index) => (
+          <motion.a
+            key={index}
+            href={item.link}
+            target="_blank"
+            rel="noreferrer"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.15, duration: 0.5 }}
+            whileHover={{ scale: 1.2, x: 5 }}
+            className="p-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-gray-300 hover:text-primary transition-all shadow-lg hover:shadow-primary/30"
+          >
+            {item.icon}
+          </motion.a>
+        ))}
+      </aside>
+
+      {/* Content Wrapper */}
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-20 w-full max-w-7xl">
+        {/* TEXT SECTION */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="flex flex-col gap-6 text-center lg:text-left"
+        >
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight bg-gradient-to-r from-primary via-pink-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,0,140,0.4)]">
+            Hi, I'm <br />
+            <span className="text-white drop-shadow-lg">Israt Jahan</span>
+          </h1>
+
+          <p className="text-gray-300 text-lg max-w-md mx-auto lg:mx-0">
+            A passionate{" "}
+            <span className="text-primary font-semibold">
+              MERN Stack Developer
+            </span>{" "}
+            crafting modern, scalable & visually stunning digital experiences.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
+            <motion.button
+              whileHover={{ scale: 1.08, y: -3 }}
+              whileTap={{ scale: 0.97 }}
+              className="px-6 h-12 rounded-lg bg-gradient-to-r from-primary to-purple-600 
+                         text-white font-bold shadow-lg shadow-primary/40 hover:shadow-primary/70 
+                         flex items-center gap-2"
+            >
+              🚀 View Projects
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.08, y: -3 }}
+              whileTap={{ scale: 0.97 }}
+              className="px-6 h-12 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 
+                         text-white font-bold hover:bg-white/20 transition-all"
+            >
+              📄 Download CV
+            </motion.button>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
-            <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold tracking-wide transition-transform hover:scale-105">
-              <span className="truncate">View My Work</span>
-            </button>
-            <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white text-base font-bold tracking-wide transition-transform hover:scale-105">
-              <span className="truncate">Download CV</span>
-            </button>
-          </div>
-        </div>
-        <div className="relative flex justify-center">
-          <div className="relative w-72 h-72 md:w-96 md:h-96">
-            <div className="absolute inset-0 rounded-full bg-primary/20 -translate-x-4 -translate-y-4"></div>
-            <div
-              className="w-full h-full rounded-full bg-center bg-no-repeat bg-cover shadow-lg"
-              data-alt="Professional headshot of John Doe, a frontend developer."
-              style={{
-                backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkom0FEzYuj4Rm_VhgA1MNpaoHj_PJZNM8xrtpCWCtbBOANh8Hi1rspCuKsUSRxAcKmv81QW2KCauzBtvU597Nhssi1fkt_2JQ2BD7gN3NBM1tPh94meZsVoF0031vFbxSr1d7W0c5X_ymDg3yb7jtq_aDErXkn64WfCsvVhqxK1mXwtb6Vy2ivcaYGZk4rpeqmu0mih5Vpc981GEXCechw3YoLVMROo_9wOlkFN0RSlfbquWYADymW6q-TYjbGjSXLg-89V9OyGeB')",
-              }}
-            ></div>
-            <div className="absolute bottom-4 -right-4 md:bottom-8 md:-right-8 flex items-center gap-3 rounded-xl bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-3 shadow-lg border border-gray-200/50 dark:border-white/10">
-              <div className="flex size-10 items-center justify-center rounded-full bg-primary text-white">
-                <span className="material-symbols-outlined text-2xl">star</span>
+        </motion.div>
+
+        {/* IMAGE SECTION */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="relative flex justify-center"
+        >
+          <div className="relative w-72 h-72 sm:w-96 sm:h-96">
+            {/* Glowing Ring */}
+            <div className="absolute inset-0 rounded-full border-4 border-primary/40 animate-pulse blur-[1px] shadow-[0_0_50px_rgba(147,51,234,0.6)]"></div>
+
+            {/* Image with floating animation */}
+            <motion.img
+              src="your-image-url-here"
+              alt="Israt Jahan"
+              className="w-full h-full object-cover rounded-full shadow-xl"
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Floating Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              whileHover={{ scale: 1.05 }}
+              className="absolute bottom-4 -right-4 sm:bottom-8 sm:-right-8 
+                         bg-white/10 backdrop-blur-lg border border-white/10 
+                         rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg"
+            >
+              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-purple-500 text-white">
+                ⭐
               </div>
-              <div className="flex flex-col text-left">
-                <h3 className="text-gray-900 dark:text-white text-base font-bold leading-none">
-                  Hands-on
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm font-normal leading-tight">
-                  Experience
-                </p>
+              <div>
+                <h3 className="text-white font-bold">Hands-on</h3>
+                <p className="text-gray-300 text-sm">Experience</p>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

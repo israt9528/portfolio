@@ -1,158 +1,201 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import { FiArrowRight, FiExternalLink } from "react-icons/fi";
+import { FaReact, FaNodeJs, FaJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
+
+const projects = [
+  {
+    title: "TravelEase",
+    subtitle:
+      "TravelEase is a modern full-stack vehicle booking platform designed to make renting, listing, and managing vehicles effortlessly.",
+    description:
+      "TravelEase offers a seamless experience where users can list their own vehicles, view detailed car information, and book rides effortlessly. Built with the MERN stack and integrated with Firebase Authentication, TravelEase ensures secure access, real-time data management, and a smooth, responsive interface. Whether you’re renting or listing, TravelEase makes your travel experience easier, smarter, and faster.",
+    image: "https://i.ibb.co.com/bMmH3yHK/Capture-1.png",
+    knowMoreLink: "https://github.com/israt9528/travelEase-client.git",
+    livePreviewLink: "https://travel-ease-eaca9.web.app/",
+    techStack: [
+      <FaReact key="react" />,
+      <FaNodeJs key="node" />,
+      <FaJs key="js" />,
+    ],
+  },
+  {
+    title: "WarmPaws",
+    subtitle:
+      "A pet care service platform offering winter pet services, booking, and secure user authentication.",
+    description:
+      "The main purpose of WarmPaws – Pet Care in Winter is to create a warm, friendly, and reliable digital space for pet owners who want to take extra care of their furry friends during the cold season. Many pets face challenges in winter, such as dry skin, cold-related illnesses, and discomfort due to low temperatures. WarmPaws helps pet owners overcome these problems by offering a simple platform where they can explore various winter care services.",
+    image:
+      "https://i.ibb.co.com/zhn9q9Cc/33be2737-4f4a-491a-b163-3b97c01f3cde.jpg",
+    knowMoreLink: "https://github.com/israt9528/WarmPaws.git",
+    livePreviewLink: "https://warmpaws-pet-care-in-win-94c91.web.app/",
+    techStack: [
+      <FaReact key="react" />,
+      <FaJs key="js" />,
+      <FaCss3Alt key="css" />,
+    ],
+  },
+  {
+    title: "Web Station",
+    subtitle:
+      "Web Station is your one-stop platform to explore, install, and enjoy web apps.",
+    description:
+      "Web Station is an all-in-one digital marketplace designed to help users seamlessly discover, explore, and install web-based applications. From productivity tools and creative utilities to entertainment apps and online games, Web Station makes it easy for users to find everything they need in one centralized hub.",
+    image: "https://i.ibb.co.com/JwTBqgpD/2.png",
+    knowMoreLink: "https://github.com/israt9528/Web-Station.git",
+    livePreviewLink: "https://mellifluous-lollipop-ca6c17.netlify.app/",
+    techStack: [
+      <FaReact key="react" />,
+      <FaNodeJs key="node" />,
+      <FaHtml5 key="html" />,
+      <FaCss3Alt key="css" />,
+    ],
+  },
+];
+
+const cardVariants = {
+  offscreen: { opacity: 0, y: 50 },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 50, damping: 20 },
+  },
+};
+
+const imageOverlayVariants = {
+  hover: { opacity: 1, transition: { duration: 0.3 } },
+};
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-background-dark font-display antialiased">
-      <div className="p-4 sm:p-6 md:p-8 lg:p-12">
-        <div className="max-w-4xl mx-auto">
-          <header className="text-center mb-12 lg:mb-16">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-100">
-              My Projects
-            </h1>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-400">
-              A collection of projects showcasing my skills in frontend development.
-            </p>
-          </header>
-          <main className="space-y-8">
-            <div className="bg-slate-900/40 p-6 sm:p-8 md:p-10 rounded-DEFAULT backdrop-blur-lg border border-slate-800 shadow-2xl shadow-black/20">
+    <section
+      id="projects"
+      className="bg-gray-900 font-display antialiased py-16"
+    >
+      <div className="px-4 sm:px-6 md:px-8 lg:px-12 max-w-6xl mx-auto">
+        <header className="text-center mb-16">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl sm:text-5xl font-bold text-slate-100"
+          >
+            My Projects
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="mt-4 text-lg text-slate-400"
+          >
+            A collection of projects showcasing my skills in frontend
+            development.
+          </motion.p>
+        </header>
+
+        <main className="space-y-12">
+          {projects.map((project, idx) => (
+            <motion.div
+              key={idx}
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={cardVariants}
+              className="bg-slate-900/40 p-6 sm:p-8 md:p-10 rounded-2xl backdrop-blur-lg border border-slate-800 shadow-2xl shadow-black/20 hover:scale-[1.01] transition-transform duration-300"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="order-2 md:order-1">
-                  <h2 className="text-2xl font-bold text-slate-100">
-                    AI Chat Interface
-                  </h2>
-                  <p className="mt-2 text-sm text-slate-400">
-                    Developing the next generation of conversational AI.
-                  </p>
-                  <p className="mt-6 text-base text-slate-300">
-                    A sleek and responsive chat interface built with modern web
-                    technologies. It features real-time message updates, user
-                    authentication, and a clean, intuitive design optimized for
-                    user experience.
-                  </p>
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                      className="inline-flex items-center justify-center px-5 py-2.5 bg-primary/5 text-primary hover:bg-primary/10 rounded-lg text-sm font-medium transition-colors"
-                      href="#"
-                    >
-                      Know More
-                      <span className="material-symbols-outlined ml-2 text-base">arrow_forward</span>
-                    </a>
-                    <a
-                      className="inline-flex items-center justify-center px-5 py-2.5 text-slate-300 hover:bg-slate-800/50 rounded-lg text-sm font-medium transition-colors"
-                      href="#"
-                    >
-                      Live Preview
-                      <span className="material-symbols-outlined ml-2 text-base">open_in_new</span>
-                    </a>
-                  </div>
+                {/* Text Content */}
+                <div
+                  className={
+                    idx % 2 === 0 ? "order-2 md:order-1" : "order-2 md:order-2"
+                  }
+                >
+                  <motion.h2
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                    className="text-2xl font-bold text-slate-100"
+                  >
+                    {project.title}
+                  </motion.h2>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="mt-2 text-sm text-slate-400"
+                  >
+                    {project.subtitle}
+                  </motion.p>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                    className="mt-6 text-base text-slate-300"
+                  >
+                    {project.description}
+                  </motion.p>
+
+                  {/* Tech stack icons */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    className="mt-4 flex flex-wrap gap-3 text-xl text-primary"
+                  >
+                    {project.techStack.map((icon, i) => (
+                      <div
+                        key={i}
+                        className="bg-slate-800 p-2 rounded-md flex items-center justify-center hover:bg-primary/20 transition-colors"
+                      >
+                        {icon}
+                      </div>
+                    ))}
+                  </motion.div>
                 </div>
-                <div className="order-1 md:order-2">
-                  <img
-                    alt="AI Chat Interface project preview showing a dark themed application with prompts and responses."
-                    className="rounded-xl shadow-lg"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRGy-woq_mbQaHV6rC6KMIpg01LcYaeELoQWeYXVWdulI2ZLjfQuTP8G8suLwDoL3EYsp3kJ79M-b_MC0UqQH1sEvkvH6cJgr4y6FJKL4zRLKqXOLaiLuMQXeQgb_9UZi-Gta1wfRhXysZCIq4lM8gcV8d4Oqbdtlu3XvpX44wmH93i-IXjtvOY1FVTCsSuxQAd6U8A9d8nBTsEsGzZ44voIcKrAMEghoOGOesDrKkT7PTNZjG39GffZGj9LMwXar3-02-JGJouOyd"
+
+                {/* Project Image with overlay */}
+                <motion.div
+                  className={
+                    idx % 2 === 0
+                      ? "order-1 md:order-2 relative"
+                      : "order-1 md:order-1 relative"
+                  }
+                >
+                  <motion.img
+                    src={project.image}
+                    alt={`${project.title} preview`}
+                    className="rounded-xl shadow-lg w-full object-cover"
+                    whileHover={{ scale: 1.05, filter: "brightness(0.8)" }}
+                    transition={{ duration: 0.3 }}
                   />
-                </div>
+                  {/* Overlay buttons */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/50 rounded-xl"
+                  >
+                    <a
+                      href={project.knowMoreLink}
+                      className="inline-flex items-center justify-center px-5 py-2.5 bg-white/30 text-blue-800 hover:bg-white/80 rounded-lg text-sm font-bold transition-colors"
+                    >
+                      Know More <FiArrowRight className="ml-2 text-base" />
+                    </a>
+                    <a
+                      href={project.livePreviewLink}
+                      className="inline-flex items-center justify-center px-5 py-2.5 bg-black/40 text-slate-300 hover:bg-slate-800/70 rounded-lg text-sm font-medium transition-colors"
+                    >
+                      Live Preview <FiExternalLink className="ml-2 text-base" />
+                    </a>
+                  </motion.div>
+                </motion.div>
               </div>
-            </div>
-            <div className="bg-slate-900/40 p-6 sm:p-8 md:p-10 rounded-DEFAULT backdrop-blur-lg border border-slate-800 shadow-2xl shadow-black/20">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="order-1 md:order-1">
-                  <img
-                    alt="Data Visualization Dashboard project preview showing a 3D point cloud of a street scene."
-                    className="rounded-xl shadow-lg"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCXM230e2jB2iiFFyf0go6fKtnpemcnYOek1-ynJUw85Pz4NBvuaMvfjP4Xan0FURAuQX5B8xz4P1H6xwdsfomWHAGG6aTVLEM65IjrHmGwF0KU20A-LNaKlydRL11GjwreSPLhQ7Fh9zNKR1h0eWQt6y-gPkvc5O1OlcjeHGAtNlhE7zh3YttvKqezWmlZ4D7kTP5xpsx8z-YkSpeIdilA6-X3MvFCAKz6yoWJsFaJJgYASE_45KL4f0VfhBfat77MX1MUKD5n-Ns"
-                  />
-                </div>
-                <div className="order-2 md:order-2">
-                  <h2 className="text-2xl font-bold text-slate-100">
-                    Data Visualization Dashboard
-                  </h2>
-                  <p className="mt-2 text-sm text-slate-400">
-                    The best quality data to fuel the best performing models.
-                  </p>
-                  <div className="my-6 border-b border-slate-700">
-                    <nav className="flex -mb-px space-x-6">
-                      <button className="py-2 px-1 border-b-2 border-primary text-primary text-sm font-semibold">
-                        3D
-                      </button>
-                      <button className="py-2 px-1 border-b-2 border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-500 text-sm font-medium transition-colors">
-                        Image
-                      </button>
-                      <button className="py-2 px-1 border-b-2 border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-500 text-sm font-medium transition-colors">
-                        Mapping
-                      </button>
-                    </nav>
-                  </div>
-                  <p className="text-base text-slate-300">
-                    An advanced dashboard for visualizing complex 3D datasets.
-                    This project leverages WebGL to render high-performance,
-                    interactive point clouds and sensor data directly in the
-                    browser.
-                  </p>
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                      className="inline-flex items-center justify-center px-5 py-2.5 bg-primary/5 text-primary hover:bg-primary/10 rounded-lg text-sm font-medium transition-colors"
-                      href="#"
-                    >
-                      Know More
-                      <span className="material-symbols-outlined ml-2 text-base">arrow_forward</span>
-                    </a>
-                    <a
-                      className="inline-flex items-center justify-center px-5 py-2.5 text-slate-300 hover:bg-slate-800/50 rounded-lg text-sm font-medium transition-colors"
-                      href="#"
-                    >
-                      Live Preview
-                      <span className="material-symbols-outlined ml-2 text-base">open_in_new</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-slate-900/40 p-6 sm:p-8 md:p-10 rounded-DEFAULT backdrop-blur-lg border border-slate-800 shadow-2xl shadow-black/20">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="order-2 md:order-1">
-                  <h2 className="text-2xl font-bold text-slate-100">
-                    Image Curation Platform
-                  </h2>
-                  <p className="mt-2 text-sm text-slate-400">
-                    Unearth the most valuable data by intelligently managing
-                    your dataset.
-                  </p>
-                  <p className="mt-6 text-base text-slate-300">
-                    A web application for curating, testing, and evaluating
-                    image datasets. Features include advanced filtering, model
-                    comparison tools, and a robust interface for identifying the
-                    highest value data.
-                  </p>
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                      className="inline-flex items-center justify-center px-5 py-2.5 bg-primary/5 text-primary hover:bg-primary/10 rounded-lg text-sm font-medium transition-colors"
-                      href="#"
-                    >
-                      Know More
-                      <span className="material-symbols-outlined ml-2 text-base">arrow_forward</span>
-                    </a>
-                    <a
-                      className="inline-flex items-center justify-center px-5 py-2.5 text-slate-300 hover:bg-slate-800/50 rounded-lg text-sm font-medium transition-colors"
-                      href="#"
-                    >
-                      Live Preview
-                      <span className="material-symbols-outlined ml-2 text-base">open_in_new</span>
-                    </a>
-                  </div>
-                </div>
-                <div className="order-1 md:order-2">
-                  <img
-                    alt="Image Curation Platform project preview showing a gallery of images with filtering and data visualization components."
-                    className="rounded-xl shadow-lg"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl9JPF4GCne8v46eY6hQK4MKmxyvOlKaEm7bTEhAD-YEjmwqnGx5xB3giihO7iCEK3uQfqwZeNdwZliR92cIgBT7Ie-Lxy3csh7R4QzjKWjBx0H4-6hkydttUtBuw4L8nwEETZGk9h_eel2nQtUfZpJ_kTpsRyO9DexgiEXbyWQiV3P-sHMF5EScTrkxCuNez_xo7GhkZAJIrLEsB8hRWeAVp7AeXtlLQ0XxvMSysMmR_QcquovPVGZLvv0MxhvMs62j1t4KllCOK0"
-                  />
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
+            </motion.div>
+          ))}
+        </main>
       </div>
     </section>
   );

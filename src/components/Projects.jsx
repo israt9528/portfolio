@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiArrowRight, FiExternalLink } from "react-icons/fi";
 import { FaReact, FaNodeJs, FaJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { RiNextjsFill } from "react-icons/ri";
 
 const projects = [
   {
@@ -32,6 +33,23 @@ const projects = [
     techStack: [
       <FaReact key="react" />,
       <FaJs key="js" />,
+      <FaCss3Alt key="css" />,
+    ],
+  },
+  {
+    title: "GrabNGo",
+    subtitle: "GrabNgo is a modern tech-focused e-commerce platform",
+    description:
+      "GrabNgo is a modern tech-focused e-commerce platform where customers can easily explore and buy smartphones, smartwatches, earphones, and a wide range of smart devices. The platform also empowers sellers to list and manage their products, creating a smooth and efficient marketplace for both buyers and sellers.",
+    image:
+      "https://i.ibb.co.com/0Vfh2wTf/b092fff5-c219-4283-8685-f7627386a78f.jpg",
+    knowMoreLink: "https://github.com/israt9528/Web-Station.git",
+    livePreviewLink: "https://next-app-adz6.vercel.app",
+    techStack: [
+      <RiNextjsFill key="next" />,
+
+      <FaNodeJs key="node" />,
+      <FaHtml5 key="html" />,
       <FaCss3Alt key="css" />,
     ],
   },

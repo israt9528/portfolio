@@ -14,6 +14,7 @@ import {
 } from "react-icons/si";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { RiNextjsFill } from "react-icons/ri";
 
 const skills = [
   { name: "HTML", value: 98, icon: <FaHtml5 className="text-orange-500" /> },
@@ -44,6 +45,11 @@ const skills = [
     name: "Git/GitHub",
     value: 85,
     icon: <FaGitAlt className="text-red-500" />,
+  },
+  {
+    name: "Next.js",
+    value: 70,
+    icon: <RiNextjsFill className="text-blue-500" />,
   },
 ];
 

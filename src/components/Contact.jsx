@@ -21,12 +21,6 @@ const contactInfo = [
     value: "linkedin.com/in/israt-jahan",
     link: "https://www.linkedin.com/in/israt-jahan-889516388/",
   },
-  {
-    icon: <FiTwitter />,
-    label: "Twitter",
-    value: "@yourusername",
-    link: "https://twitter.com/yourusername",
-  },
 ];
 
 const formVariants = {

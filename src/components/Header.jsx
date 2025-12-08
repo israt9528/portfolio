@@ -1,3 +1,4 @@
+import { Download } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
 const Header = () => {
@@ -111,7 +112,7 @@ const Header = () => {
               bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-[0_0_20px_rgba(168,85,247,0.45)]
               font-semibold transition hover:scale-105 hover:-translate-y-[3px]"
             >
-              Hire Me
+              <Download className="mr-2"></Download> Resume
             </button>
           </nav>
 

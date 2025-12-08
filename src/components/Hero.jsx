@@ -1,172 +1,263 @@
-import React from "react";
+// Hero.jsx (Updated: JSX + Official Tech Icons + Mobile-Optimized Particle Density)
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { Github, Linkedin, Mail } from "lucide-react";
+import portfolioImg from "/portfolio.jpeg";
 import Particles from "react-tsparticles";
-import { Github, Linkedin, Mail, MessageSquare } from "lucide-react";
+import { loadFull } from "tsparticles";
+
+// Official icons (simple-icons SVG inline)
+const techIcons = [
+  {
+    name: "React",
+    svg: "https://cdn.simpleicons.org/react/61DAFB",
+  },
+  {
+    name: "Node.js",
+    svg: "https://cdn.simpleicons.org/nodedotjs/3C873A",
+  },
+  {
+    name: "MongoDB",
+    svg: "https://cdn.simpleicons.org/mongodb/47A248",
+  },
+  {
+    name: "Express",
+    svg: "https://cdn.simpleicons.org/express/FFFFFF",
+  },
+];
 
 export default function Hero() {
+  const typeRef = useRef(null);
+
+  /* --------------------------------------
+     TYPEWRITER EFFECT
+  -------------------------------------- */
+  useEffect(() => {
+    const roles = [
+      "Full Stack Developer",
+      "MERN Stack Developer",
+      "UI Engineer",
+      "Frontend Specialist",
+    ];
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    const typingSpeed = 90;
+    const erasingSpeed = 40;
+    const pauseAfterTyping = 1400;
+    let timer;
+
+    function type() {
+      const el = typeRef.current;
+      if (!el) return;
+
+      if (charIndex < roles[roleIndex].length) {
+        el.textContent += roles[roleIndex][charIndex];
+        charIndex++;
+        timer = setTimeout(type, typingSpeed);
+      } else {
+        timer = setTimeout(erase, pauseAfterTyping);
+      }
+    }
+
+    function erase() {
+      const el = typeRef.current;
+      if (!el) return;
+
+      if (charIndex > 0) {
+        el.textContent = roles[roleIndex].substring(0, charIndex - 1);
+        charIndex--;
+        timer = setTimeout(erase, erasingSpeed);
+      } else {
+        roleIndex = (roleIndex + 1) % roles.length;
+        timer = setTimeout(type, 400);
+      }
+    }
+
+    type();
+    return () => clearTimeout(timer);
+  }, []);
+
+  /* --------------------------------------
+     PARTICLE CONFIG (mobile auto-density reduce)
+  -------------------------------------- */
+  const particlesInit = async (engine) => {
+    await loadFull(engine);
+  };
+
+  const particlesOptions = {
+    fullScreen: { enable: false },
+    background: { color: "transparent" },
+    particles: {
+      number: {
+        value: 60,
+        density: { enable: true, area: 1200 },
+      },
+      color: { value: "#7f5af0" },
+      opacity: { value: 0.4 },
+      size: { value: 2 },
+      move: { enable: true, speed: 0.6 },
+    },
+    responsive: [
+      {
+        maxWidth: 640,
+        options: {
+          particles: {
+            number: { value: 25 }, // reduced density on mobile
+          },
+        },
+      },
+    ],
+  };
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-[#0b0d15]"
+      className="relative min-h-screen w-full flex items-center px-6 md:px-16 lg:px-24 bg-[#07070b] text-white overflow-hidden"
     >
-      {/* NEON MOVING PARTICLES BACKGROUND */}
+      {/* Particles */}
       <Particles
-        options={{
-          fpsLimit: 60,
-          background: { color: "transparent" },
-          interactivity: {
-            events: {
-              onHover: { enable: true, mode: "repulse" },
-              onClick: { enable: true, mode: "push" },
-            },
-            modes: {
-              repulse: { distance: 120, duration: 0.4 },
-              push: { quantity: 4 },
-            },
-          },
-          particles: {
-            number: { value: 50, density: { enable: true, area: 800 } },
-            color: { value: ["#A855F7", "#F472B6", "#6366F1"] },
-            shape: { type: "circle" },
-            opacity: {
-              value: 0.5,
-              random: true,
-              anim: { enable: true, speed: 0.5, opacity_min: 0.2, sync: false },
-            },
-            size: { value: { min: 2, max: 4 }, random: true },
-            move: {
-              enable: true,
-              speed: 0.5,
-              direction: "none",
-              random: true,
-              straight: false,
-              outModes: { default: "out" },
-            },
-            links: {
-              enable: true,
-              distance: 120,
-              color: "#A855F7",
-              opacity: 0.3,
-              width: 1,
-              blink: false,
-              warp: false,
-            },
-          },
-          detectRetina: true,
-        }}
+        id="tsparticles"
+        init={particlesInit}
+        options={particlesOptions}
         className="absolute inset-0 -z-10"
       />
 
-      {/* Floating Sidebar Icons */}
-      <aside className="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 flex-col gap-6 z-50">
-        {[
-          { icon: <Github size={26} />, link: "https://github.com/" },
-          { icon: <Linkedin size={26} />, link: "https://linkedin.com/" },
-          { icon: <Mail size={26} />, link: "mailto:israt9528@gmail.com" },
-          { icon: <MessageSquare size={26} />, link: "#" },
-        ].map((item, index) => (
-          <motion.a
-            key={index}
-            href={item.link}
-            target="_blank"
-            rel="noreferrer"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.15, duration: 0.5 }}
-            whileHover={{ scale: 1.2, x: 5 }}
-            className="p-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-gray-300 hover:text-primary transition-all shadow-lg hover:shadow-primary/30"
-          >
-            {item.icon}
-          </motion.a>
-        ))}
-      </aside>
+      {/* Neon grid */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20 opacity-10"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(127,90,240,0.12) 1px, transparent 1px), linear-gradient(rgba(0,212,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
+      />
 
-      {/* Content Wrapper */}
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-20 w-full max-w-7xl">
-        {/* TEXT SECTION */}
+      {/* Main row layout */}
+      <div className="flex w-full flex-col lg:flex-row items-center justify-between gap-16">
+        {/* ---------------- LEFT (TEXT) ---------------- */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          className="flex flex-col gap-6 text-center lg:text-left"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex-1 text-center lg:text-left"
         >
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight bg-gradient-to-r from-primary via-pink-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,0,140,0.4)]">
-            Hi, I'm <br />
-            <span className="text-white drop-shadow-lg">Israt Jahan</span>
+          {/* Glow behind text */}
+          <div className="absolute -z-10 left-0 top-20 w-72 h-72 bg-purple-600/30 blur-[120px]"></div>
+
+          {/* Name */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+            <span className="text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.45)]">
+              Israt
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_22px_rgba(127,90,240,0.55)]">
+              Jahan.
+            </span>
           </h1>
 
-          <p className="text-gray-300 text-lg max-w-md mx-auto lg:mx-0">
-            A passionate{" "}
-            <span className="text-primary font-semibold">
-              MERN Stack Developer
-            </span>{" "}
-            crafting modern, scalable & visually stunning digital experiences.
+          {/* Typewriter */}
+          <p className="mt-3 text-xl text-gray-300 inline-flex gap-1 items-center">
+            <span ref={typeRef} className="underline-animate" />
+            <span className="animate-blink">|</span>
+          </p>
+
+          {/* Description */}
+          <p className="max-w-lg mx-auto lg:mx-0 mt-4 text-gray-400">
+            I build modern, scalable and high-performance web apps with the MERN
+            stack.
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
-            <motion.button
-              whileHover={{ scale: 1.08, y: -3 }}
-              whileTap={{ scale: 0.97 }}
-              className="px-6 h-12 rounded-lg bg-gradient-to-r from-primary to-purple-600 
-                         text-white font-bold shadow-lg shadow-primary/40 hover:shadow-primary/70 
-                         flex items-center gap-2"
+          <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              href="#contact"
+              className="px-8 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 text-white font-semibold"
             >
-              🚀 View Projects
-            </motion.button>
+              Contact Me
+            </motion.a>
+          </div>
 
-            <motion.button
-              whileHover={{ scale: 1.08, y: -3 }}
-              whileTap={{ scale: 0.97 }}
-              className="px-6 h-12 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 
-                         text-white font-bold hover:bg-white/20 transition-all"
-            >
-              📄 Download CV
-            </motion.button>
+          {/* Social Icons */}
+          <div className="flex justify-center lg:justify-start gap-3 mt-6">
+            {[Github, Linkedin, Mail].map((Icon, i) => (
+              <motion.a
+                whileHover={{ scale: 1.12 }}
+                key={i}
+                href="#"
+                className="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition"
+              >
+                <Icon className="w-6 h-6" />
+              </motion.a>
+            ))}
+          </div>
+
+          {/* TECH ICONS */}
+          <div className="flex flex-wrap gap-6 mt-8 justify-center lg:justify-start">
+            {techIcons.map((t, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.15 }}
+                className="flex items-center gap-2"
+              >
+                <img
+                  src={t.svg}
+                  alt={t.name}
+                  className="w-8 h-8 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+                />
+                <span className="text-gray-300 text-sm">{t.name}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
-        {/* IMAGE SECTION */}
+        {/* ---------------- RIGHT (IMAGE) ---------------- */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative flex justify-center"
+          viewport={{ once: true }}
+          className="flex-1 flex justify-center relative"
         >
-          <div className="relative w-72 h-72 sm:w-96 sm:h-96">
-            {/* Glowing Ring */}
-            <div className="absolute inset-0 rounded-full border-4 border-primary/40 animate-pulse blur-[1px] shadow-[0_0_50px_rgba(147,51,234,0.6)]"></div>
-
-            {/* Image with floating animation */}
-            <motion.img
-              src=""
-              alt="Israt Jahan"
-              className="w-full h-full object-cover rounded-full shadow-xl"
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          <div className="relative w-72 md:w-80 lg:w-[420px] rounded-3xl overflow-hidden shadow-2xl p-[2px] bg-gradient-to-br from-indigo-600/20 via-purple-500/10 to-fuchsia-500/10">
+            <img
+              src={portfolioImg}
+              alt="profile"
+              className="w-full h-full object-cover rounded-3xl opacity-95"
             />
-
-            {/* Floating Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              whileHover={{ scale: 1.05 }}
-              className="absolute bottom-4 -right-4 sm:bottom-8 sm:-right-8 
-                         bg-white/10 backdrop-blur-lg border border-white/10 
-                         rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg"
-            >
-              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-purple-500 text-white">
-                ⭐
-              </div>
-              <div>
-                <h3 className="text-white font-bold">Hands-on</h3>
-                <p className="text-gray-300 text-sm">Experience</p>
-              </div>
-            </motion.div>
           </div>
         </motion.div>
       </div>
+
+      {/* Inline animations */}
+      <style>{`
+        .underline-animate{
+          position: relative;
+        }
+        .underline-animate::after{
+          content:"";
+          position:absolute;
+          left:0;
+          bottom:-4px;
+          height:3px;
+          width:0%;
+          background:linear-gradient(90deg,#7f5af0,#00d4ff);
+          transition:0.35s;
+        }
+        .underline-animate:hover::after{
+          width:100%;
+        }
+        @keyframes blink {
+          0%,49%{opacity:1}
+          50%,100%{opacity:0}
+        }
+        .animate-blink{
+          animation:blink 1s steps(2,start) infinite;
+        }
+      `}</style>
     </section>
   );
 }

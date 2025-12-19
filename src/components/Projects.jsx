@@ -1,219 +1,272 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { FiArrowRight, FiExternalLink } from "react-icons/fi";
-import { FaReact, FaNodeJs, FaJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
-import { RiNextjsFill } from "react-icons/ri";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiArrowUpRight, FiGithub, FiEye, FiArrowUp } from "react-icons/fi";
+import {
+  FaReact,
+  FaNodeJs,
+  FaJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaQuoteRight,
+} from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiMongodb,
+  SiTailwindcss,
+  SiFirebase,
+  SiExpress,
+  SiStripe,
+} from "react-icons/si";
 
 const projects = [
   {
-    title: "TravelEase",
-    subtitle:
-      "TravelEase is a modern full-stack vehicle booking platform designed to make renting, listing, and managing vehicles effortlessly.",
+    title: "PULSE",
+    tag: "FULL STACK Role Based DASHBOARD",
     description:
-      "TravelEase offers a seamless experience where users can list their own vehicles, view detailed car information, and book rides effortlessly. Built with the MERN stack and integrated with Firebase Authentication, TravelEase ensures secure access, real-time data management, and a smooth, responsive interface. Whether you’re renting or listing, TravelEase makes your travel experience easier, smarter, and faster.",
+      "Pulse is a modern blood donation web application that enables users to request blood, donate blood, search donors, manage requests, and support organizations through funding, all within a secure and responsive platform built using the MERN stack.",
+    image:
+      "https://i.ibb.co.com/cSBgTpVk/3a4b9d5c-0cdb-40ed-97d9-ec06bb80b45f.jpg",
+    repo: "https://github.com/israt9528/blood-donation.git",
+    live: "https://blood-donation-9b87e.web.app",
+    tech: [
+      <SiExpress key="0" className="text-white" />,
+      <SiStripe key="stripe" className="text-[#635BFF]" />,
+      <FaReact key="1" className="text-[#61DAFB]" />,
+      <FaNodeJs key="2" className="text-[#339933]" />,
+      <SiMongodb key="3" className="text-[#47A248]" />,
+      <SiFirebase key="4" className="text-[#FFCA28]" />,
+      <SiTailwindcss key="5" className="text-[#38BDF8]" />,
+    ],
+  },
+  {
+    title: "TravelEase",
+    tag: "FULL STACK ARCHITECTURE",
+    description:
+      "A premium vehicle booking ecosystem engineered for seamless peer-to-peer rentals. I built a high-performance infrastructure handling real-time listings, fleet management, and secure booking flows. Integrated Firebase for identity and MERN for the core engine, delivering a lag-free experience.",
     image: "https://i.ibb.co.com/bMmH3yHK/Capture-1.png",
-    knowMoreLink: "https://github.com/israt9528/travelEase-client.git",
-    livePreviewLink: "https://travel-ease-eaca9.web.app/",
-    techStack: [
-      <FaReact key="react" />,
-      <FaNodeJs key="node" />,
-      <FaJs key="js" />,
+    repo: "https://github.com/israt9528/travelEase-client.git",
+    live: "https://travel-ease-eaca9.web.app/",
+    tech: [
+      <SiExpress key="0" className="text-white" />,
+      <FaReact key="1" className="text-[#61DAFB]" />,
+      <FaNodeJs key="2" className="text-[#339933]" />,
+      <SiMongodb key="3" className="text-[#47A248]" />,
+      <SiFirebase key="4" className="text-[#FFCA28]" />,
+      <SiTailwindcss key="5" className="text-[#38BDF8]" />,
     ],
   },
   {
     title: "WarmPaws",
-    subtitle:
-      "A pet care service platform offering winter pet services, booking, and secure user authentication.",
+    tag: "UI/UX • PRODUCT DESIGN",
     description:
-      "The main purpose of WarmPaws – Pet Care in Winter is to create a warm, friendly, and reliable digital space for pet owners who want to take extra care of their furry friends during the cold season. Many pets face challenges in winter, such as dry skin, cold-related illnesses, and discomfort due to low temperatures. WarmPaws helps pet owners overcome these problems by offering a simple platform where they can explore various winter care services.",
+      "Addressing the critical need for specialized pet care during winter. Features a sophisticated booking engine and trust-oriented UI. Engineered a modular service architecture allowing pet owners to discover and secure professional care easily with high-conversion patterns.",
     image:
       "https://i.ibb.co.com/zhn9q9Cc/33be2737-4f4a-491a-b163-3b97c01f3cde.jpg",
-    knowMoreLink: "https://github.com/israt9528/WarmPaws.git",
-    livePreviewLink: "https://warmpaws-pet-care-in-win-94c91.web.app/",
-    techStack: [
-      <FaReact key="react" />,
-      <FaJs key="js" />,
-      <FaCss3Alt key="css" />,
+    repo: "https://github.com/israt9528/WarmPaws.git",
+    live: "https://warmpaws-pet-care-in-win-94c91.web.app/",
+    tech: [
+      <FaReact key="1" className="text-[#61DAFB]" />,
+      <SiTailwindcss key="2" className="text-[#38BDF8]" />,
+      <FaJs key="3" className="text-[#F7DF1E]" />,
+      <FaCss3Alt key="4" className="text-[#1572B6]" />,
+      <FaHtml5 key="5" className="text-[#E34F26]" />,
     ],
   },
   {
     title: "GrabNGo",
-    subtitle: "GrabNgo is a modern tech-focused e-commerce platform",
+    tag: "NEXT.JS • E-COMMERCE",
     description:
-      "GrabNgo is a modern tech-focused e-commerce platform where customers can easily explore and buy smartphones, smartwatches, earphones, and a wide range of smart devices. The platform also empowers sellers to list and manage their products, creating a smooth and efficient marketplace for both buyers and sellers.",
+      "A modern, tech-centric marketplace designed for smart devices. Empowering buyers and sellers via a scalable multi-vendor dashboard. Implemented advanced search algorithms and rapid-response filtering with Next.js for a lightning-fast browsing experience.",
     image:
       "https://i.ibb.co.com/0Vfh2wTf/b092fff5-c219-4283-8685-f7627386a78f.jpg",
-    knowMoreLink: "https://github.com/israt9528/Web-Station.git",
-    livePreviewLink: "https://next-app-adz6.vercel.app",
-    techStack: [
-      <RiNextjsFill key="next" />,
-
-      <FaNodeJs key="node" />,
-      <FaHtml5 key="html" />,
-      <FaCss3Alt key="css" />,
-    ],
-  },
-  {
-    title: "Web Station",
-    subtitle:
-      "Web Station is your one-stop platform to explore, install, and enjoy web apps.",
-    description:
-      "Web Station is an all-in-one digital marketplace designed to help users seamlessly discover, explore, and install web-based applications. From productivity tools and creative utilities to entertainment apps and online games, Web Station makes it easy for users to find everything they need in one centralized hub.",
-    image: "https://i.ibb.co.com/JwTBqgpD/2.png",
-    knowMoreLink: "https://github.com/israt9528/Web-Station.git",
-    livePreviewLink: "https://mellifluous-lollipop-ca6c17.netlify.app/",
-    techStack: [
-      <FaReact key="react" />,
-      <FaNodeJs key="node" />,
-      <FaHtml5 key="html" />,
-      <FaCss3Alt key="css" />,
+    repo: "https://github.com/israt9528/Web-Station.git",
+    live: "https://next-app-adz6.vercel.app",
+    tech: [
+      <SiNextdotjs key="1" className="text-white" />,
+      <FaNodeJs key="2" className="text-[#339933]" />,
+      <SiExpress key="3" className="text-white" />,
+      <SiTailwindcss key="4" className="text-[#38BDF8]" />,
+      <SiMongodb key="5" className="text-[#47A248]" />,
     ],
   },
 ];
 
-const cardVariants = {
-  offscreen: { opacity: 0, y: 50 },
-  onscreen: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 50, damping: 20 },
-  },
-};
-
-const imageOverlayVariants = {
-  hover: { opacity: 1, transition: { duration: 0.3 } },
-};
-
 const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projects : projects.slice(0, 2);
+
+  const scrollToTop = () => {
+    document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       id="projects"
-      className="bg-gray-900 font-display antialiased py-16"
+      className="relative bg-[#050505] py-32 px-6 md:px-12 overflow-hidden z-0"
     >
-      <div className="px-4 sm:px-6 md:px-8 lg:px-12 max-w-6xl mx-auto">
-        <header className="text-center mb-16">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl font-bold text-slate-100"
-          >
-            My Projects
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="mt-4 text-lg text-slate-400"
-          >
-            A collection of projects showcasing my skills in frontend
-            development.
-          </motion.p>
-        </header>
+      {/* Background Gradients */}
+      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], x: [0, 100, 0], y: [0, 50, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-purple-500/10 blur-[120px] rounded-full"
+        />
+        <motion.div
+          animate={{ scale: [1.2, 1, 1.2], x: [0, -100, 0], y: [0, -50, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-blue-500/10 blur-[120px] rounded-full"
+        />
+      </div>
 
-        <main className="space-y-12">
-          {projects.map((project, idx) => (
-            <motion.div
-              key={idx}
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={cardVariants}
-              className="bg-slate-900/40 p-6 sm:p-8 md:p-10 rounded-2xl backdrop-blur-lg border border-slate-800 shadow-2xl shadow-black/20 hover:scale-[1.01] transition-transform duration-300"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                {/* Text Content */}
-                <div
-                  className={
-                    idx % 2 === 0 ? "order-2 md:order-1" : "order-2 md:order-2"
-                  }
-                >
-                  <motion.h2
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="text-2xl font-bold text-slate-100"
-                  >
-                    {project.title}
-                  </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="mt-2 text-sm text-slate-400"
-                  >
-                    {project.subtitle}
-                  </motion.p>
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 }}
-                    className="mt-6 text-base text-slate-300"
-                  >
-                    {project.description}
-                  </motion.p>
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-24 flex flex-col md:flex-row md:items-end justify-between border-b border-white/5 pb-12"
+        >
+          <div>
+            <span className="text-purple-500 font-mono text-[10px] uppercase tracking-[0.6em] mb-4 block">
+              Portfolio Archive
+            </span>
+            <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase leading-none">
+              Featured{" "}
+              <span className="text-gray-700 font-light italic lowercase">
+                Works
+              </span>
+            </h2>
+          </div>
+          <div className="text-gray-500 text-[10px] font-mono mt-8 md:mt-0 space-y-1 text-right">
+            <p>DESIGNED & DEVELOPED BY ISY</p>
+            <p>© 2025 ALL RIGHTS RESERVED</p>
+          </div>
+        </motion.div>
 
-                  {/* Tech stack icons */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                    className="mt-4 flex flex-wrap gap-3 text-xl text-primary"
-                  >
-                    {project.techStack.map((icon, i) => (
-                      <div
-                        key={i}
-                        className="bg-slate-800 p-2 rounded-md flex items-center justify-center hover:bg-primary/20 transition-colors"
+        {/* Project List */}
+        <div className="space-y-32">
+          <AnimatePresence mode="wait">
+            {visibleProjects.map((project, idx) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                key={project.title}
+                className={`flex flex-col lg:flex-row items-center gap-10 lg:gap-20 ${
+                  idx % 2 !== 0 ? "lg:flex-row-reverse" : ""
+                }`}
+              >
+                {/* Image Side */}
+                <div className="w-full lg:w-[50%] group relative">
+                  {/* Glassmorphism Quote Icon - Overlapping edge */}
+                  <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 z-30 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl text-purple-500">
+                    <FaQuoteRight size={22} />
+                  </div>
+
+                  <div className="relative h-[250px] md:h-[350px] w-full rounded-2xl overflow-hidden border border-white/10 bg-[#0A0A0A]">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                    />
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-6">
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-4 bg-white text-black rounded-full hover:bg-purple-600 hover:text-white transition-all transform hover:-translate-y-2"
                       >
-                        {icon}
-                      </div>
-                    ))}
-                  </motion.div>
+                        <FiEye size={20} />
+                      </a>
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-4 bg-white/10 text-white border border-white/20 rounded-full hover:bg-white/20 transition-all transform hover:-translate-y-2"
+                      >
+                        <FiGithub size={20} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Project Image with overlay */}
-                <motion.div
-                  className={
-                    idx % 2 === 0
-                      ? "order-1 md:order-2 relative"
-                      : "order-1 md:order-1 relative"
-                  }
-                >
-                  <motion.img
-                    src={project.image}
-                    alt={`${project.title} preview`}
-                    className="rounded-xl shadow-lg w-full object-cover"
-                    whileHover={{ scale: 1.05, filter: "brightness(0.8)" }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  {/* Overlay buttons */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/50 rounded-xl"
+                {/* Text Side */}
+                <div className="w-full lg:w-[45%]">
+                  <span className="text-purple-500 font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">
+                    {project.tag}
+                  </span>
+                  <h3 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm md:text-lg leading-relaxed mb-10">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack with Glassmorphism */}
+                  <div className="flex flex-wrap gap-3 mb-12">
+                    {project.tech.map((icon, i) => (
+                      <div
+                        key={i}
+                        className="p-3 rounded-xl bg-white/[0.03] backdrop-blur-md border border-white/5 hover:border-purple-500/50 transition-colors"
+                      >
+                        <div className="text-xl opacity-80 hover:opacity-100">
+                          {icon}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <motion.a
+                    whileHover={{ x: 10 }}
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-4 text-white text-[10px] font-bold uppercase tracking-[0.4em] group w-fit"
                   >
-                    <a
-                      href={project.knowMoreLink}
-                      className="inline-flex items-center justify-center px-5 py-2.5 bg-white/30 text-blue-800 hover:bg-white/80 rounded-lg text-sm font-bold transition-colors"
-                    >
-                      Know More <FiArrowRight className="ml-2 text-base" />
-                    </a>
-                    <a
-                      href={project.livePreviewLink}
-                      className="inline-flex items-center justify-center px-5 py-2.5 bg-black/40 text-slate-300 hover:bg-slate-800/70 rounded-lg text-sm font-medium transition-colors"
-                    >
-                      Live Preview <FiExternalLink className="ml-2 text-base" />
-                    </a>
-                  </motion.div>
-                </motion.div>
-              </div>
+                    Explore Case Study
+                    <span className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full group-hover:bg-purple-600 transition-colors">
+                      <FiArrowUpRight />
+                    </span>
+                  </motion.a>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="mt-26 flex flex-col items-center gap-8">
+          {!showAll ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="mt-24 flex justify-center"
+            >
+              <button
+                onClick={() => setShowAll(true)}
+                className="group relative px-12 py-4 bg-transparent text-white font-mono text-[10px] uppercase tracking-[0.5em] border border-white/10 rounded-full hover:border-purple-500 transition-all duration-500"
+              >
+                <span className="relative z-10">Explore All Projects</span>
+                <div className="absolute inset-0 bg-purple-600/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
+              </button>
             </motion.div>
-          ))}
-        </main>
+          ) : (
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              onClick={scrollToTop}
+              className="group flex flex-col items-center gap-4 text-gray-500 hover:text-white transition-colors"
+            >
+              <div className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 group-hover:border-purple-500 group-hover:bg-purple-500/10 transition-all">
+                <FiArrowUp />
+              </div>
+              <span className="font-mono text-[9px] uppercase tracking-[0.4em]">
+                Back to top
+              </span>
+            </motion.button>
+          )}
+        </div>
       </div>
     </section>
   );

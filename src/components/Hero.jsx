@@ -1,263 +1,183 @@
-// Hero.jsx (Updated: JSX + Official Tech Icons + Mobile-Optimized Particle Density)
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
-import portfolioImg from "/portfolio.jpeg";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-
-// Official icons (simple-icons SVG inline)
-const techIcons = [
-  {
-    name: "React",
-    svg: "https://cdn.simpleicons.org/react/61DAFB",
-  },
-  {
-    name: "Node.js",
-    svg: "https://cdn.simpleicons.org/nodedotjs/3C873A",
-  },
-  {
-    name: "MongoDB",
-    svg: "https://cdn.simpleicons.org/mongodb/47A248",
-  },
-  {
-    name: "Express",
-    svg: "https://cdn.simpleicons.org/express/FFFFFF",
-  },
-];
+import { Download, Github, Linkedin, Mail, Sparkles } from "lucide-react";
+import portfolioImg from "/israt.jpeg";
 
 export default function Hero() {
   const typeRef = useRef(null);
 
-  /* --------------------------------------
-     TYPEWRITER EFFECT
-  -------------------------------------- */
-  useEffect(() => {
-    const roles = [
-      "Full Stack Developer",
-      "MERN Stack Developer",
-      "UI Engineer",
-      "Frontend Specialist",
-    ];
-
-    let roleIndex = 0;
-    let charIndex = 0;
-    const typingSpeed = 90;
-    const erasingSpeed = 40;
-    const pauseAfterTyping = 1400;
-    let timer;
-
-    function type() {
-      const el = typeRef.current;
-      if (!el) return;
-
-      if (charIndex < roles[roleIndex].length) {
-        el.textContent += roles[roleIndex][charIndex];
-        charIndex++;
-        timer = setTimeout(type, typingSpeed);
-      } else {
-        timer = setTimeout(erase, pauseAfterTyping);
-      }
-    }
-
-    function erase() {
-      const el = typeRef.current;
-      if (!el) return;
-
-      if (charIndex > 0) {
-        el.textContent = roles[roleIndex].substring(0, charIndex - 1);
-        charIndex--;
-        timer = setTimeout(erase, erasingSpeed);
-      } else {
-        roleIndex = (roleIndex + 1) % roles.length;
-        timer = setTimeout(type, 400);
-      }
-    }
-
-    type();
-    return () => clearTimeout(timer);
-  }, []);
-
-  /* --------------------------------------
-     PARTICLE CONFIG (mobile auto-density reduce)
-  -------------------------------------- */
-  const particlesInit = async (engine) => {
-    await loadFull(engine);
-  };
-
-  const particlesOptions = {
-    fullScreen: { enable: false },
-    background: { color: "transparent" },
-    particles: {
-      number: {
-        value: 60,
-        density: { enable: true, area: 1200 },
-      },
-      color: { value: "#7f5af0" },
-      opacity: { value: 0.4 },
-      size: { value: 2 },
-      move: { enable: true, speed: 0.6 },
+  const socialLinks = [
+    {
+      name: "Github",
+      icon: Github,
+      url: "https://github.com/israt9528",
+      color: "#ffffff",
     },
-    responsive: [
-      {
-        maxWidth: 640,
-        options: {
-          particles: {
-            number: { value: 25 }, // reduced density on mobile
-          },
-        },
-      },
-    ],
-  };
+    {
+      name: "Linkedin",
+      icon: Linkedin,
+      url: "https://www.linkedin.com/in/israt-jahan-889516388/",
+      color: "#0077b5",
+    },
+    {
+      name: "Email",
+      icon: Mail,
+      url: "mailto:israt9528@gmail.com",
+      color: "#ea4335",
+    },
+  ];
+
+  useEffect(() => {
+    const roles = ["Full Stack Developer", "MERN Expert", "UI/UX Strategist"];
+    let roleIdx = 0;
+    let charIdx = 0;
+    let erasing = false;
+    const type = () => {
+      const curr = roles[roleIdx];
+      if (typeRef.current) {
+        typeRef.current.textContent = erasing
+          ? curr.slice(0, charIdx--)
+          : curr.slice(0, charIdx++);
+      }
+      if (!erasing && charIdx === curr.length + 1) {
+        erasing = true;
+        setTimeout(type, 2000);
+      } else if (erasing && charIdx === 0) {
+        erasing = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+        setTimeout(type, 500);
+      } else setTimeout(type, erasing ? 40 : 80);
+    };
+    type();
+  }, []);
 
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex items-center px-6 md:px-16 lg:px-24 bg-[#07070b] text-white overflow-hidden"
+      className="relative min-h-screen w-full bg-[#050505] flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Particles */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={particlesOptions}
-        className="absolute inset-0 -z-10"
-      />
+      <div className="absolute inset-0 flex items-center justify-center z-0 opacity-40 md:opacity-60 mt-16">
+        <div className="relative w-full max-w-4xl h-[80vh]">
+          <img
+            src={portfolioImg}
+            alt="Israt Jahan"
+            className="w-full h-full object-contain object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#05050560]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#2a192a] rounded-r-lg" />
+        </div>
+      </div>
 
-      {/* Neon grid */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-20 opacity-10"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(127,90,240,0.12) 1px, transparent 1px), linear-gradient(rgba(0,212,255,0.06) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-        }}
-      />
-
-      {/* Main row layout */}
-      <div className="flex w-full flex-col lg:flex-row items-center justify-between gap-16">
-        {/* ---------------- LEFT (TEXT) ---------------- */}
+      <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="flex-1 text-center lg:text-left"
+          className="lg:col-span-4 text-center lg:text-left order-2 lg:order-1"
         >
-          {/* Glow behind text */}
-          <div className="absolute -z-10 left-0 top-20 w-72 h-72 bg-purple-600/30 blur-[120px]"></div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-widest mb-6">
+            <Sparkles size={14} /> Open to Opportunities
+          </div>
 
-          {/* Name */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-            <span className="text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.45)]">
-              Israt
-            </span>
+          <h1 className="text-5xl md:text-7xl font-black text-white leading-none tracking-tighter">
+            ISRAT
             <br />
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_22px_rgba(127,90,240,0.55)]">
-              Jahan.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+              JAHAN.
             </span>
           </h1>
 
-          {/* Typewriter */}
-          <p className="mt-3 text-xl text-gray-300 inline-flex gap-1 items-center">
-            <span ref={typeRef} className="underline-animate" />
-            <span className="animate-blink">|</span>
+          <p className="mt-6 text-lg text-gray-400 font-medium h-8">
+            I'm a <span ref={typeRef} className="text-white"></span>
+            <span className="text-purple-500 animate-pulse">|</span>
           </p>
 
-          {/* Description */}
-          <p className="max-w-lg mx-auto lg:mx-0 mt-4 text-gray-400">
-            I build modern, scalable and high-performance web apps with the MERN
-            stack.
-          </p>
-
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
+          <div className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
             <motion.a
               whileHover={{ scale: 1.05 }}
-              href="#contact"
-              className="px-8 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 text-white font-semibold"
+              href="/CV.pdf"
+              download="Israt_Jahan_CV.pdf"
+              className="px-8 py-4 bg-white text-black font-bold rounded-xl shadow-xl hover:shadow-purple-500/20 transition-all flex items-center gap-2"
             >
-              Contact Me
+              <Download size={18} /> CV
             </motion.a>
-          </div>
 
-          {/* Social Icons */}
-          <div className="flex justify-center lg:justify-start gap-3 mt-6">
-            {[Github, Linkedin, Mail].map((Icon, i) => (
-              <motion.a
-                whileHover={{ scale: 1.12 }}
-                key={i}
-                href="#"
-                className="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition"
-              >
-                <Icon className="w-6 h-6" />
-              </motion.a>
-            ))}
-          </div>
-
-          {/* TECH ICONS */}
-          <div className="flex flex-wrap gap-6 mt-8 justify-center lg:justify-start">
-            {techIcons.map((t, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.15 }}
-                className="flex items-center gap-2"
-              >
-                <img
-                  src={t.svg}
-                  alt={t.name}
-                  className="w-8 h-8 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-                />
-                <span className="text-gray-300 text-sm">{t.name}</span>
-              </motion.div>
-            ))}
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              href="/Resume.pdf"
+              download="Israt_Jahan_Resume.pdf"
+              className="px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center gap-2"
+            >
+              <Download size={18} /> Resume
+            </motion.a>
           </div>
         </motion.div>
 
-        {/* ---------------- RIGHT (IMAGE) ---------------- */}
+        <div className="lg:col-span-4 h-64 lg:h-full order-1 lg:order-2" />
+
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="flex-1 flex justify-center relative"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="lg:col-span-4 flex flex-col gap-6 order-3"
         >
-          <div className="relative w-72 md:w-80 lg:w-[420px] rounded-3xl overflow-hidden shadow-2xl p-[2px] bg-gradient-to-br from-indigo-600/20 via-purple-500/10 to-fuchsia-500/10">
-            <img
-              src={portfolioImg}
-              alt="profile"
-              className="w-full h-full object-cover rounded-3xl opacity-95"
-            />
+          {/* Card 1 with thin border */}
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-purple-600/30 backdrop-blur-xl transition-colors hover:bg-white/[0.06]">
+            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">
+              Expertise
+            </p>
+            <h3 className="text-2xl font-bold text-white tracking-tight">
+              MERN Stack Specialist
+            </h3>
+            <p className="text-sm text-gray-400 mt-2">
+              Building high-performance web architectures with React, Node, and
+              MongoDB.
+            </p>
+          </div>
+
+          {/* Card 2 with thin border */}
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-blue-600/30 backdrop-blur-xl">
+            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-4">
+              Connect with me
+            </p>
+            <div className="flex gap-5">
+              {socialLinks.map((social, i) => (
+                <motion.a
+                  key={i}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  className="p-3 rounded-xl bg-white/5 hover:bg-purple-500/20 text-gray-300 hover:text-purple-400 transition-all border border-white/5 hover:border-purple-500/30"
+                  aria-label={social.name}
+                >
+                  <social.icon size={22} />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4 lg:justify-end mt-2">
+            <div className="text-right">
+              <p className="text-white text-sm font-bold">Dhaka, Bangladesh</p>
+              <p className="text-gray-500 text-xs tracking-tighter uppercase font-medium">
+                Active Now
+              </p>
+            </div>
+            <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+              </span>
+            </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Inline animations */}
-      <style>{`
-        .underline-animate{
-          position: relative;
-        }
-        .underline-animate::after{
-          content:"";
-          position:absolute;
-          left:0;
-          bottom:-4px;
-          height:3px;
-          width:0%;
-          background:linear-gradient(90deg,#7f5af0,#00d4ff);
-          transition:0.35s;
-        }
-        .underline-animate:hover::after{
-          width:100%;
-        }
-        @keyframes blink {
-          0%,49%{opacity:1}
-          50%,100%{opacity:0}
-        }
-        .animate-blink{
-          animation:blink 1s steps(2,start) infinite;
-        }
-      `}</style>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden z-[-1]">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 blur-[120px] rounded-full" />
+      </div>
     </section>
   );
 }

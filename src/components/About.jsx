@@ -1,117 +1,264 @@
-// import React from 'react';
-
-// const About = () => {
-//   return (
-//     <section id="about-me" className="bg-slate-900 text-slate-300 pt-20">
-//       <section className="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8">
-//         <div className="container mx-auto max-w-7xl">
-//           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-//             <div className="relative w-full h-80 lg:h-full rounded-lg overflow-hidden">
-//               <img
-//                 alt="A developer working on code across two monitors in a dimly lit room."
-//                 className="w-full h-full object-cover"
-//                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8cU3K0oVUCuL3gz31NbUapR2ajH3ijqmpVILGWm_i9AxX5sRgF1yG_rwQDM0KPSUW69fhfs-3R62jrbhPqj9Qd5_G4pPl7HGfrTdE6AUNbmmlcHT1DLVHo1hgzIbnTdvokv8qaNM3A9402enUHo5bKbPaOZDGYYXrCJjeu31OxYvvi97UPq2nj8HOn1aLvCwOvrOHeF06RB14TVcfdRsE4uO2qNaB5G4_kg3Quvy9NDtzcnO_CWc6Plcm4DLkMJB0Zt4Dsv1Wgnqj"
-//               />
-//               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-slate-900 to-transparent"></div>
-//             </div>
-//             <div className="text-left">
-//               <h2 className="text-3xl sm:text-4xl font-bold font-display text-slate-100 mb-6">
-//                 Who Am I
-//               </h2>
-//               <div className="space-y-4 text-slate-400">
-//                 <p>
-//                   I'm a passionate MERN Stack Developer with a knack for creating
-//                   beautiful and functional websites
-//                 </p>
-//                 <p>
-//                   I have a strong foundation in HTML, CSS, and JavaScript, and I
-//                   love to learn new technologies and frameworks. I enjoy working
-//                   on projects that challenge me and allow me to grow as a
-//                   developer.
-//                 </p>
-//                 <p>
-//                   When I'm not coding, you can find me hiking in the mountains or
-//                   experimenting with new recipes in the kitchen. I believe that a
-//                   healthy work-life balance is essential for creativity and
-//                   productivity.
-//                 </p>
-//               </div>
-//               <div className="mt-8">
-//                 <div>
-//                   <p className="text-3xl font-bold text-primary">20</p>
-//                   <p className="text-sm text-slate-500 tracking-wide">Projects</p>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </section>
-//   );
-// };
-
-// export default About;
-
 import React from "react";
-import { motion } from "framer-motion";
-import { Sparkles, Code, User } from "lucide-react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import {
+  Sparkles,
+  Code,
+  Terminal,
+  Cpu,
+  Rocket,
+  ShieldCheck,
+  Layers,
+  Zap,
+} from "lucide-react";
 
 export default function AboutMe() {
+  // Mouse hover tilt effect for the code window
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-100, 100], [10, -10]);
+  const rotateY = useTransform(x, [-100, 100], [-10, 10]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
     <section
       id="about-me"
-      className="relative w-full min-h-screen px-6 py-24 bg-[#0A0A0F] text-white flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-screen px-6 pb-26 pt-32  text-white flex items-center overflow-hidden"
     >
-      {/* Glowing background orbs */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-purple-600/20 blur-3xl rounded-full animate-pulse" />
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-600/20 blur-3xl rounded-full animate-pulse" />
+      {/* --- ANIMATED MESH GRADIENT BACKGROUND --- */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="absolute inset-0 bg-[#050505]" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative max-w-4xl mx-auto text-center backdrop-blur-xl p-10 rounded-2xl border border-white/10 shadow-[0_0_25px_rgba(255,255,255,0.1)]"
-      >
-        {/* Icon */}
+        {/* Animated Purple Orb */}
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto mb-6 w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-blue-500 shadow-[0_0_25px_rgba(99,102,241,0.6)]"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.15, 0.3, 0.15],
+            x: [0, 50, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[10%] left-[-5%] w-[600px] h-[600px] bg-purple-600/50 blur-[130px] rounded-full"
+        />
+
+        {/* Animated Blue Orb */}
+        <motion.div
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.1, 0.2, 0.1],
+            x: [0, -40, 0],
+            y: [0, 40, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[5%] right-[0%] w-[500px] h-[500px] bg-blue-600 blur-[130px] rounded-full"
+        />
+      </div>
+
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
+        {/* LEFT SIDE: Visual Composition */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "circOut" }}
+          style={{ perspective: 1000 }}
+          className="lg:col-span-5 relative group"
         >
-          <User size={32} />
+          <motion.div
+            style={{ rotateX, rotateY }}
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              x.set(e.clientX - rect.left - rect.width / 2);
+              y.set(e.clientY - rect.top - rect.height / 2);
+            }}
+            onMouseLeave={() => {
+              x.set(0);
+              y.set(0);
+            }}
+            className="relative z-10 p-[1px] rounded-3xl bg-gradient-to-br from-purple-500/40 via-transparent to-blue-500/30"
+          >
+            <div className="bg-[#0A0A0F]/90 backdrop-blur-3xl rounded-[23px] p-6 md:p-10 border border-white/10 shadow-2xl relative overflow-hidden">
+              <div className="flex gap-2 mb-8">
+                <div className="w-3 h-3 rounded-full bg-red-500/40" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/40" />
+                <div className="w-3 h-3 rounded-full bg-green-500/40" />
+              </div>
+              <pre className="font-mono text-xs md:text-sm leading-relaxed overflow-x-hidden">
+                <code className="block">
+                  <span className="text-purple-400">class</span>{" "}
+                  <span className="text-blue-400">Developer</span> {"{"}
+                  {"\n  "}{" "}
+                  <span className="text-gray-500">// Core Philosophy</span>
+                  {"\n  "} <span className="text-purple-400">constructor</span>
+                  () {"{"}
+                  {"\n    "}
+                  <span className="text-pink-400">this</span>.name ={" "}
+                  <span className="text-green-400">"Israt Jahan"</span>;
+                  {"\n    "}
+                  <span className="text-pink-400">this</span>.focus ={" "}
+                  <span className="text-green-400">"Full Stack Architect"</span>
+                  ;{"\n    "}
+                  <span className="text-pink-400">this</span>.stack = [
+                  <span className="text-yellow-400">"MERN"</span>,{" "}
+                  <span className="text-yellow-400">"Cloud"</span>];
+                  {"\n  "} {"}"}
+                  {"\n\n  "} <span className="text-purple-400">build</span>
+                  (concept) {"{"}
+                  {"\n    "}
+                  <span className="text-purple-400">return</span> concept.
+                  <span className="text-blue-400">deploy</span>(cleanCode);
+                  {"\n  "} {"}"}
+                  {"\n"} {"}"}
+                </code>
+              </pre>
+            </div>
+          </motion.div>
+
+          {/* Floating Badges */}
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            className="absolute -top-6 -right-4 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl z-20"
+          >
+            <Layers className="text-purple-400" size={24} />
+          </motion.div>
         </motion.div>
 
-        {/* Title */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-          About Me
-        </h2>
-
-        {/* Description */}
-        <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-10">
-          I'm a passionate MERN Stack developer who loves creating smooth,
-          powerful, and visually appealing digital experiences. I enjoy solving
-          complex problems, designing modern UI/UX, and building scalable
-          applications with clean logic and optimized performance.
-        </p>
-
-        {/* Skills showcase icons */}
-        <div className="flex items-center justify-center gap-6 mt-6">
-          <motion.div
-            whileHover={{ scale: 1.15, y: -5 }}
-            className="p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 backdrop-blur-xl transition shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-          >
-            <Sparkles className="text-purple-300" size={32} />
+        {/* RIGHT SIDE: Narrative */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="lg:col-span-7 flex flex-col gap-8"
+        >
+          <motion.div variants={itemVariants}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-[1px] w-8 bg-purple-500" />
+              <h2 className="text-purple-500 font-mono tracking-[0.3em] text-xs uppercase">
+                01. Discovery
+              </h2>
+            </div>
+            <h3 className="text-4xl md:text-7xl font-black text-white leading-[1.1] tracking-tighter">
+              Crafting High-End <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+                Digital Logic.
+              </span>
+            </h3>
           </motion.div>
 
-          <motion.div
-            whileHover={{ scale: 1.15, y: -5 }}
-            className="p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 backdrop-blur-xl transition shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-          >
-            <Code className="text-blue-300" size={32} />
+          <motion.div variants={itemVariants} className="space-y-6">
+            <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+              I am a{" "}
+              <span className="text-white border-b-2 border-purple-500/30">
+                MERN Stack Developer
+              </span>{" "}
+              driven by the challenge of turning complex problems into elegant,
+              scalable web applications. My approach combines robust engineering
+              with a relentless focus on the user experience.
+            </p>
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed">
+              I specialize in architecting systems that aren't just functional,
+              but future-proof. By leveraging the latest in JavaScript
+              ecosystems, I build buttery-smooth interfaces backed by secure,
+              lightning-fast servers.
+            </p>
           </motion.div>
-        </div>
-      </motion.div>
+
+          {/* Features Grid */}
+          <motion.div
+            variants={itemVariants}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"
+          >
+            {[
+              {
+                icon: Rocket,
+                title: "Performance",
+                desc: "Optimized for extreme speed.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Scalability",
+                desc: "Ready for enterprise growth.",
+              },
+              {
+                icon: Zap,
+                title: "Efficiency",
+                desc: "Modular and maintainable code.",
+              },
+              {
+                icon: Terminal,
+                title: "Modern Stack",
+                desc: "Next-gen development standards.",
+              },
+            ].map((feature, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -5 }}
+                className="flex items-start gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.04] hover:border-purple-500/20 transition-all group"
+              >
+                <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-all shadow-lg shadow-purple-500/10">
+                  <feature.icon size={20} />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-sm mb-1">
+                    {feature.title}
+                  </h4>
+                  <p className="text-gray-500 text-xs leading-relaxed">
+                    {feature.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Experience Bar */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap gap-12 mt-4 py-8 border-t border-white/5"
+          >
+            <div className="group">
+              <p className="text-3xl font-black text-white group-hover:text-purple-500 transition-colors">
+                20+
+              </p>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-gray-500">
+                Projects Launched
+              </p>
+            </div>
+            <div className="group">
+              <p className="text-3xl font-black text-white group-hover:text-blue-500 transition-colors">
+                MERN
+              </p>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-gray-500">
+                Core Expertise
+              </p>
+            </div>
+            <div className="group">
+              <p className="text-3xl font-black text-white group-hover:text-pink-500 transition-colors">
+                99%
+              </p>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-gray-500">
+                User Satisfaction
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

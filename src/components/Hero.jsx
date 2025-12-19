@@ -56,7 +56,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen w-full bg-[#050505] flex items-center justify-center overflow-hidden pt-20"
     >
-      <div className="absolute inset-0 flex items-center justify-center z-0 opacity-40 md:opacity-60 mt-16">
+      <div className="absolute inset-0 flex items-center justify-center z-0 opacity-40 md:opacity-60 lg:mt-16">
         <div className="relative w-full max-w-4xl h-[80vh]">
           <img
             src={portfolioImg}
